@@ -1,10 +1,9 @@
 #!/bin/bash
 
-PATCH_FILE="/home/lgsm/blazor_lgsm/config_patch.cfg"
+PATCH_FILE="/home/lgsm/lunaticpanel/plugins/maksimshimshon_gamemanagepanel/bash/lifecycle/server_control/config_patch.cfg"
 
 # Add as many folders as you want here:
 INI_DIRS=(
-    "/home/lgsm/lgsm/config-default/config-game"
     "/home/lgsm/Zomboid/Server"
 )
 

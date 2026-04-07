@@ -5,8 +5,8 @@
 
 set -e
 
-GAME_INFO_FILE="/home/lgsm/blazor_lgsm/scripts/game_info.json"
-USER_PARAMS_FILE="/home/lgsm/blazor_lgsm/user_startup_parameters.json"
+GAME_INFO_FILE="/home/lgsm/lunaticpanel/plugins/maksimshimshon_gamemanagepanel/bash/lifecycle/server_control/game_info.json"
+USER_PARAMS_FILE="/home/lgsm/lunaticpanel/plugins/maksimshimshon_gamemanagepanel/config/lifecycle/user_defined_startup_params.json"
 CONFIG_FILE="/home/lgsm/lgsm/config-lgsm/pzserver/common.cfg"
 
 

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Title>$(AssemblyName)</Title>
+		<Version>$(GlobalVersion)</Version>
+		<Company>$(GlobalCompany)</Company>
+		<Copyright>$(GlobalCopyright)</Copyright>
+		<Authors>$(GlobalAuthors)</Authors>
+		<AssemblyName>MaksimShimshon.GameManagePanel.Lib.Installation</AssemblyName>
+		<RootNamespace>MaksimShimshon.GameManagePanel.Lib.Installation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
