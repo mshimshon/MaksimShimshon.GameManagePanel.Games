@@ -9,12 +9,18 @@
 		<Company>$(GlobalCompany)</Company>
 		<Copyright>$(GlobalCopyright)</Copyright>
 		<Authors>$(GlobalAuthors)</Authors>
-		<AssemblyName>MaksimShimshon.GameManagePanel.Lib.Installation</AssemblyName>
-		<RootNamespace>MaksimShimshon.GameManagePanel.Lib.Installation</RootNamespace>
+		<AssemblyName>GameHost.Games.Lib.Installation</AssemblyName>
+		<RootNamespace>GameHost.Games.Lib.Installation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Folder Include="Contracts\Requests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LunaticPanel.Core.Utils" Version="0.1.792" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.5" />
+    <PackageReference Include="System.CommandLine" Version="2.0.5" />
   </ItemGroup>
 
 </Project>

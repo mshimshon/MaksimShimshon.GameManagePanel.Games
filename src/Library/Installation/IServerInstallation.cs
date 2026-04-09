@@ -1,8 +1,13 @@
-﻿namespace MaksimShimshon.GameManagePanel.Lib.Installation;
+﻿using GameHost.Games.Lib.Installation.Contracts.Responses;
+using GameHost.Games.Lib.Installation.Contracts.Responses.ValueObjects;
 
-internal interface IServerInstallation
+namespace GameHost.Games.Lib.Installation;
+
+public interface IServerInstallation
 {
     Task InstallAsync(CancellationToken ct = default);
-    Task<bool> CheckUpdateAsync(CancellationToken ct = default);
+    Task<ServerUpdateResponse?> CheckUpdateAsync(CancellationToken ct = default);
     Task UpdateAsync(CancellationToken ct = default);
+    Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default);
+    Task GetGameInfoAsync(CancellationToken ct = default);
 }

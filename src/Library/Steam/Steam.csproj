@@ -9,13 +9,14 @@
 	  <Company>$(GlobalCompany)</Company>
 	  <Copyright>$(GlobalCopyright)</Copyright>
 	  <Authors>$(GlobalAuthors)</Authors>
-	  <AssemblyName>MaksimShimshon.GameManagePanel.Lib.Steam</AssemblyName>
-	  <RootNamespace>MaksimShimshon.GameManagePanel.Lib.Steam</RootNamespace>
+	  <AssemblyName>GameHost.Games.Lib.Steam</AssemblyName>
+	  <RootNamespace>GameHost.Games.Lib.Steam</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="LunaticPanel.Core.Utils" Version="0.1.791" />
     <PackageReference Include="LunaticPanel.Core.Utils.Abstraction" Version="0.1.791" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
   </ItemGroup>
 
   <ItemGroup>

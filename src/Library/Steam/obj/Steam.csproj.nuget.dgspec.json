@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\Steam\\Steam.csproj",
-        "projectName": "MaksimShimshon.GameManagePanel.Lib.Steam",
+        "projectName": "GameHost.Games.Lib.Steam",
         "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\Steam\\Steam.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\Steam\\obj\\",
@@ -58,6 +58,10 @@
             "LunaticPanel.Core.Utils.Abstraction": {
               "target": "Package",
               "version": "[0.1.791, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.5, )"
             }
           },
           "imports": [

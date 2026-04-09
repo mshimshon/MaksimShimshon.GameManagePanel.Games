@@ -1,11 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using LunaticPanel.Core.Utils;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace MaksimShimshon.GameManagePanel.Lib.Steam;
+namespace GameHost.Games.Lib.Steam;
 
 public static class RegisterServicesExt
 {
     public static void AddSteamServices(this IServiceCollection services)
     {
-
+        services.AddLinuxCommandUtilityService();
     }
+
 }

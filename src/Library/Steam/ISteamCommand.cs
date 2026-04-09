@@ -1,4 +1,4 @@
-﻿namespace MaksimShimshon.GameManagePanel.Lib.Steam;
+﻿namespace GameHost.Games.Lib.Steam;
 
 public interface ISteamCommand
 {

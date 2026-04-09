@@ -1,9 +1,11 @@
-﻿namespace MaksimShimshon.GameManagePanel.Lib.Installation;
+﻿using GameHost.Games.Lib.Installation.Contracts.Responses;
+
+namespace GameHost.Games.Lib.Installation;
 
 internal interface IServerControl
 {
     Task StartAsync(CancellationToken ct = default);
     Task StopAsync(CancellationToken ct = default);
     Task RestartAsync(CancellationToken ct = default);
-    Task StatusAsync(CancellationToken ct = default);
+    Task<ServerStatusResponse> StatusAsync(CancellationToken ct = default);
 }
