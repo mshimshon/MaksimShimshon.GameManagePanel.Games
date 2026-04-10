@@ -1,0 +1,6 @@
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\ProjectZomboid.Console\obj\Debug\net10.0\ProjectZomboid.Console.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\ProjectZomboid.Console\obj\Debug\net10.0\ProjectZomboid.Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\ProjectZomboid.Console\obj\Debug\net10.0\ProjectZomboid.Console.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\ProjectZomboid.Console\obj\Debug\net10.0\ProjectZomboid.Console.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\ProjectZomboid.Console\obj\Debug\net10.0\ProjectZomboid.Console.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\ProjectZomboid.Console\obj\Debug\net10.0\ProjectZomboid.Console.sourcelink.json

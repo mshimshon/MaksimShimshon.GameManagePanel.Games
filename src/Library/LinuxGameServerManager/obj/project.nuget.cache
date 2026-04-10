@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "jpFzkV8H9QY=",
+  "dgSpecHash": "9yllCmZtPnA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\LinuxGameServerManager\\LinuxGameServerManager.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils\\0.1.796\\lunaticpanel.core.utils.0.1.796.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils.abstraction\\0.1.796\\lunaticpanel.core.utils.abstraction.0.1.796.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.5\\microsoft.extensions.dependencyinjection.abstractions.10.0.5.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.2\\microsoft.extensions.logging.abstractions.10.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

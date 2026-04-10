@@ -1,0 +1,6 @@
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.sourcelink.json

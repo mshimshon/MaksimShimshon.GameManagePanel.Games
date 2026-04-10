@@ -10,4 +10,6 @@ public interface IServerInstallation
     Task UpdateAsync(CancellationToken ct = default);
     Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default);
     Task GetGameInfoAsync(CancellationToken ct = default);
+    Task BackupAsync(CancellationToken ct = default);
+    Task RestoreBackupAsync(string name, CancellationToken ct = default);
 }
