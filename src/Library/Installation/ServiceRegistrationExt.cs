@@ -11,6 +11,7 @@ public static class ServiceRegistrationExt
     {
         services.AddScoped<IServerModControl, DefaultServerModControlService>();
         services.AddLinuxCommandUtilityService();
+        services.AddCrazyReportUtilityService();
     }
 
 

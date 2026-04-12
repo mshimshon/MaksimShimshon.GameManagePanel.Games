@@ -8,6 +8,7 @@ public static class RegisterServicesExt
     public static void AddLinuxGameServerManagerServices(this IServiceCollection services)
     {
         services.AddLinuxCommandUtilityService();
+        services.AddCrazyReportUtilityService();
     }
 
 }
