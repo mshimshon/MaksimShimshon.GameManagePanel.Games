@@ -15,8 +15,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="LunaticPanel.Core.Utils" Version="0.1.801" />
+	  <PackageReference Include="LunaticPanel.Core.Utils" Version="0.1.804" />
 	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\..\..\MaksimShimshon.GameManagePanel\src\MaksimShimshon.GameManagePanel\MaksimShimshon.GameManagePanel.Core\MaksimShimshon.GameManagePanel.Core.csproj" />
+	  <ProjectReference Include="..\..\..\Library\Installation\Installation.csproj" />
+	  <ProjectReference Include="..\..\..\Library\LinuxGameServerManager\LinuxGameServerManager.csproj" />
 	</ItemGroup>
 
 

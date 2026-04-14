@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using GameHost.Games.Lib.Installation.Exceptions;
+using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
+using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 using static GameHost.Games.Lib.Installation.Extensions.CommandLineExt;
 
@@ -24,4 +26,30 @@ internal static class InstallationCommandHandlerExt
         });
         return command;
     }
+
+    internal static Command SetInitializingAction(this Command command, IServiceProvider serviceProvider)
+    {
+        var linuxCommandService = serviceProvider.GetRequiredService<ILinuxCommand>();
+        command.SetAction(async (parseResult, ct) =>
+        {
+            bool isUsernameCreated = await serviceProvider.CheckUsernameExist();
+            if (!isUsernameCreated)
+            {
+                var resultUsercreate = await linuxCommandService
+                .BuildCommand($"sudo adduser --home --system --shell /usr/sbin/nologin {BaseInfo.USERNAME} ")
+                .ExecAsync();
+                if (resultUsercreate.Failed)
+                    throw new CreateUsernameFailedException(resultUsercreate.StandardError);
+            }
+            var resultDepInstall = await linuxCommandService
+            .BuildCommand($"apt install -y {string.Join(' ', BaseInfo.dependencies)}")
+            .ExecAsync();
+            if (resultDepInstall.Failed)
+                throw new InstallDependenciesFailedException(resultDepInstall.StandardError);
+
+        });
+        return command;
+    }
+
+
 }

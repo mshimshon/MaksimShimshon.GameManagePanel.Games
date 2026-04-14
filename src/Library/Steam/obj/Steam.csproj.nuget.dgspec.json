@@ -53,11 +53,11 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.801, )"
+              "version": "[0.1.804, )"
             },
             "LunaticPanel.Core.Utils.Abstraction": {
               "target": "Package",
-              "version": "[0.1.801, )"
+              "version": "[0.1.804, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",

@@ -1,20 +1,18 @@
-﻿using GameHost.Games.Lib.Installation.Optional;
+﻿using GameHost.Games.Lib.Installation.Optionals;
 using GameHost.Games.Lib.Installation.Services;
 using LunaticPanel.Core.Utils;
+using MaksimShimshon.GameManagePanel.Core;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameHost.Games.Lib.Installation;
 
 public static class ServiceRegistrationExt
 {
-    public static void AddInstallationServices(this IServiceCollection services)
+    internal static void AddInstallationServices(this IServiceCollection services)
     {
         services.AddScoped<IServerModControl, DefaultServerModControlService>();
+        services.AddPluginLocationUtilityService(BaseInfo.AssemblyName);
         services.AddLinuxCommandUtilityService();
         services.AddCrazyReportUtilityService();
     }
-
-
-
-
 }

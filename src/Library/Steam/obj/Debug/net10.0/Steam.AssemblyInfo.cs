@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameHost.Games.Lib.Steam")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45870e62c4d6b274ebe67e0959057864b8229342")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6dba0f560aa802de0261ef76ac35bacdbe30d3e")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameHost.Games.Lib.Steam")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameHost.Games.Lib.Steam")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

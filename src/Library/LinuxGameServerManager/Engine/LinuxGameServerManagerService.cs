@@ -1,107 +1,78 @@
-﻿using GameHost.Games.Lib.LinuxGameServerManager.Exceptions;
-using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
+﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response;
+using GameHost.Games.Lib.LinuxGameServerManager.Exceptions;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Engine;
 
 internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
 {
-    private readonly ILinuxCommand _linuxCommand;
-    private const string USERNAME = "lgsm";
-    private const string HOME = "/home/lgsm/";
-    private readonly string[] _dependencies = ["curl", "jq"];
-    public LinuxGameServerManagerService(ILinuxCommand linuxCommand)
-    {
-        _linuxCommand = linuxCommand;
-    }
-    public Task BackupAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    public Task ConsoleAsync(Func<string, Task> consoleStream, CancellationToken ct = default) => throw new NotImplementedException();
-    public Task DetailsAsync(bool hideSensitive = false, CancellationToken ct = default) => throw new NotImplementedException();
-    public Task GetBackupsAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    /*
-     runuser -l "$LGSM_USER" -c "
-    set -euo pipefail
-    set -E
-    export DEBIAN_FRONTEND=noninteractive
-    cd \"$LGSM_HOME\"
-    curl -Lo linuxgsm.sh https://linuxgsm.sh
-    chmod +x linuxgsm.sh
-    bash ./linuxgsm.sh \"$GAME_SERVER\"
-    bash \"./$GAME_SERVER\" auto-install
-" >&2
-     */
-    private async Task CheckAndInstallDependenciesAsync(CancellationToken ct = default)
-    {
-        // check if curl is installed
-        string dependencies = string.Join(' ', _dependencies);
-        bool depInstalled = await _linuxCommand
-            .BuildCommand($"dpkg -s {dependencies} >/dev/null")
-            .AndPrintPayload("true")
-            .OrPrintPayload("false")
-            .Sudo()
-            .ExecOrDefaultAsync(false, ct);
-        if (ct.IsCancellationRequested) return;
-        if (!depInstalled)
-        {
-            int maxTry = 2;
-            do
-            {
-                if (ct.IsCancellationRequested) return;
-                bool success = await _linuxCommand
-                .BuildCommand($"apt-get install -y {dependencies}")
-                .AndPrintPayload("true")
-                .OrPrintPayload("false")
-                .Sudo()
-                .ExecOrDefaultAsync(false, ct);
-                if (ct.IsCancellationRequested) return;
-                if (!success && maxTry > 0)
-                {
-                    maxTry--;
-                    continue;
-                }
-                else if (success) break;
-                else
-                {
-                    throw new DependencyInstallFailedException(_dependencies);
-                }
+    private readonly IServerInstallService _serverInstallService;
+    private readonly IServerControlService _serverControlService;
+    private readonly IServerBackupService _serverBackupService;
 
-            } while (maxTry >= 0 || ct.IsCancellationRequested);
-
-        }
-    }
-    private async Task DownloadLinuxGameServerManagerAsync(CancellationToken ct = default)
+    public LinuxGameServerManagerService(
+        IServerInstallService serverInstallService,
+        IServerControlService serverControlService,
+        IServerBackupService serverBackupService)
     {
-        int maxTry = 2;
-        do
-        {
-            if (ct.IsCancellationRequested) return;
-            var downloadLgsm = await _linuxCommand
-                .BuildCommand($"cd \"{HOME}\"")
-                .AndCommand("curl -Lo linuxgsm.sh https://linuxgsm.sh")
-                .AndCommand("chmod +x linuxgsm.sh")
-                .Sudo()
-                .ExecAsync();
-            if (ct.IsCancellationRequested) return;
-            if (downloadLgsm.Failed && maxTry > 0)
-            {
-                maxTry--;
-                continue;
-            }
-            else if (!downloadLgsm.Failed) break;
-            else
-            {
-                throw new LinuxGameServerManagerDownloadHasFailedException(downloadLgsm);
-            }
-
-        } while (maxTry >= 0 || ct.IsCancellationRequested);
+        _serverInstallService = serverInstallService;
+        _serverControlService = serverControlService;
+        _serverBackupService = serverBackupService;
     }
 
-    public async Task InstallAsync(string serverName, CancellationToken ct = default)
+    public Task BackupAsync(string serverName, CancellationToken ct = default)
+        => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, () => _serverBackupService.BackupAsync(serverName, ct),
+            () => new InstallAlreadyRunningException(), ct);
+    public Task GetBackupsAsync(string serverName, CancellationToken ct = default)
+                => _serverBackupService.GetBackupsAsync(serverName, ct);
+    public Task RestoreBackupAsync(string serverName, string name, CancellationToken ct = default)
+            => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, () => _serverBackupService.RestoreBackupAsync(serverName, name, ct),
+            () => new InstallAlreadyRunningException(), ct);
+
+
+
+
+    public Task ConsoleAsync(string serverName, Func<string, Task> consoleStream, CancellationToken ct = default) => throw new NotImplementedException();
+    public Task<IReadOnlyCollection<DetailsResponse>> DetailsAsync(string serverName, bool hideSensitive = false, CancellationToken ct = default)
+        => _serverControlService.DetailsAsync(serverName, hideSensitive, ct);
+    public Task RestartAsync(string serverName, CancellationToken ct = default)
+        => _serverControlService.RestartAsync(serverName, ct);
+    public Task StartAsync(string serverName, CancellationToken ct = default)
+        => _serverControlService.StartAsync(serverName, ct);
+
+    public Task StopAsync(string serverName, CancellationToken ct = default)
+        => _serverControlService.StopAsync(serverName, ct);
+
+
+
+    public Task InstallAsync(string serverName, CancellationToken ct = default)
+    => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, async () =>
+    {
+        await TrialProcess(() => _serverInstallService.DownloadSoftwareAsync(serverName, ct), ct);
+        await TrialProcess(() => _serverInstallService.InstallGameServerAsync(serverName, ct), ct);
+    }, () => new InstallAlreadyRunningException(), ct);
+    public Task UpdateGameAsync(string serverName, CancellationToken ct = default)
+         => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, async () =>
+         {
+             await _serverInstallService.ValidateGameServerAsync(serverName, ct);
+             await TrialProcess(() => _serverInstallService.UpdateGameServerAsync(serverName, ct), ct);
+         }, () => new UpdateAlreadyRunningException());
+    public Task UpdateSoftwareAsync(string serverName, CancellationToken ct = default)
+            => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, () => _serverInstallService.UpdateSoftwareAsync(serverName, ct),
+                () => new InstallAlreadyRunningException(), ct);
+    public Task ValidateAsync(string serverName, CancellationToken ct = default)
+        => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, () => _serverInstallService.ValidateGameServerAsync(serverName, ct),
+            () => new InstallAlreadyRunningException(), ct);
+
+    private async Task ProcessWithLock(string lockFile, Func<Task> action, Func<Exception> onLockFailed, CancellationToken ct = default)
     {
         try
         {
-            // TODO: Acquire Lock and Grant Sudo Permission to LGSM
-            await CheckAndInstallDependenciesAsync(ct);
-            await DownloadLinuxGameServerManagerAsync(ct);
+            FileStream lockHandle = File.Open(lockFile, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None);
+            await action();
+        }
+        catch (IOException)
+        {
+            throw onLockFailed();
         }
         catch
         {
@@ -109,14 +80,41 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
         }
         finally
         {
-            // TODO: Release Lock and Release Sudo Passwordless Permissions
+            if (File.Exists(lockFile))
+                File.Delete(lockFile);
         }
     }
-    public Task RestartAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    public Task RestoreBackupAsync(string name, CancellationToken ct = default) => throw new NotImplementedException();
-    public Task StartAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    public Task StopAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    public Task UpdateGameAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    public Task UpdateSoftwareAsync(CancellationToken ct = default) => throw new NotImplementedException();
-    public Task ValidateAsync(CancellationToken ct = default) => throw new NotImplementedException();
-}
+    private async Task TrialProcess(Func<Task> action, CancellationToken ct = default)
+    {
+        int maxTry = 2;
+        do
+        {
+            if (ct.IsCancellationRequested) return;
+            Exception? failure = default;
+            try
+            {
+                await action();
+            }
+            catch (Exception ex)
+            {
+                failure = ex;
+            }
+            bool hasFailed = failure != default;
+            bool hasSucceeded = failure != default;
+            if (ct.IsCancellationRequested) return;
+            if (hasFailed && maxTry > 0)
+            {
+                maxTry--;
+                continue;
+            }
+            else if (hasSucceeded) break;
+            else
+            {
+                throw failure!;
+            }
+
+        } while (maxTry >= 0 || ct.IsCancellationRequested);
+    }
+
+    public Task<IEnumerable<string>> CheckUpdateGameAsync(string serverName, CancellationToken ct = default)
+        => _serverInstallService.CheckUpdateGameServerAsync(serverName, ct);

@@ -1,4 +1,5 @@
-﻿using GameHost.Games.Lib.Installation.Optional;
+﻿using GameHost.Games.Lib.Installation.Exceptions;
+using GameHost.Games.Lib.Installation.Optionals;
 
 namespace GameHost.Games.Lib.Installation.Services;
 

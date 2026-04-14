@@ -1,4 +1,4 @@
-﻿namespace GameHost.Games.Lib.Installation.Optional;
+﻿namespace GameHost.Games.Lib.Installation.Optionals;
 
 /// <summary>
 /// This is an optional service and if it's not implemented and registered it is then not available

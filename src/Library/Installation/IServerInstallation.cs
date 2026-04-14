@@ -9,7 +9,6 @@ public interface IServerInstallation
     Task<ServerUpdateResponse?> CheckUpdateAsync(CancellationToken ct = default);
     Task UpdateAsync(CancellationToken ct = default);
     Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default);
-    Task GetGameInfoAsync(CancellationToken ct = default);
-    Task BackupAsync(CancellationToken ct = default);
-    Task RestoreBackupAsync(string name, CancellationToken ct = default);
+    //Task GetGameInfoAsync(CancellationToken ct = default); // TODO: WRITE DIRECTLY INTO INSTALL LIB
+
 }

@@ -1,19 +1,13 @@
 ﻿using GameHost.Games.Lib.Installation.Contracts.Responses;
 using GameHost.Games.Lib.Installation.Contracts.Responses.ValueObjects;
+using GameHost.Games.Lib.Installation.Services;
 using System.CommandLine;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace GameHost.Games.Lib.Installation.Extensions;
 
 internal static class CommandLineExt
 {
-    private static JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
-    {
-        PropertyNameCaseInsensitive = true,
-        ReferenceHandler = ReferenceHandler.IgnoreCycles,
-        WriteIndented = true
-    };
+    private static PayloadBuilderService _payloadBuilderService = new PayloadBuilderService();
     internal static async Task<bool> ExecuteCommandAsync(Func<Task> task)
     {
         bool success = await ExecuteCommandAsync(async () =>
@@ -28,13 +22,14 @@ internal static class CommandLineExt
         bool success = false;
         try
         {
+
             object? serviceResult = await task();
             var outResult = new ResultResponse()
             {
                 Data = serviceResult
             };
-            var json = JsonSerializer.Serialize(outResult, _jsonSerializerOptions);
-            Console.Out.WriteLine(json);
+
+            await _payloadBuilderService.PrintAsync(outResult);
             success = true;
             return success;
         }
@@ -44,10 +39,9 @@ internal static class CommandLineExt
             {
                 Error = new ErrorResponse(ex)
             };
-            var json = JsonSerializer.Serialize(outResult, _jsonSerializerOptions);
             //Console.Error.WriteLine(ex);
             // TODO: LOG
-            Console.Out.WriteLine(json);
+            await _payloadBuilderService.PrintAsync(outResult);
             return success;
         }
     }

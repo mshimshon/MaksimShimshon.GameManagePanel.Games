@@ -1,4 +1,4 @@
-﻿using GameHost.Games.Lib.Installation.Optional;
+﻿using GameHost.Games.Lib.Installation.Optionals;
 using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 using static GameHost.Games.Lib.Installation.Extensions.CommandLineExt;

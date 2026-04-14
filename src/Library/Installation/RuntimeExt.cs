@@ -1,9 +1,4 @@
 ﻿using GameHost.Games.Lib.Installation.Extensions;
-using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
-using LunaticPanel.Core.Utils.Abstraction.LinuxCommand.Extensions;
-using LunaticPanel.Core.Utils.Abstraction.LinuxCommand.Extensions.Common.User;
-using LunaticPanel.Core.Utils.Abstraction.LinuxCommand.Helper.Common.Packages;
-using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 
 namespace GameHost.Games.Lib.Installation;
@@ -11,26 +6,13 @@ namespace GameHost.Games.Lib.Installation;
 public static class RuntimeExt
 {
 
-    private static async Task<bool> CheckUsernameExist(this IServiceProvider serviceProvider, CancellationToken ct)
-        => await CommandLineExt.ExecuteCommandAsync(async () =>
-        {
-            var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
-            return await linuxCommand.Common().User().ExistOrDefaultAsync("lgsm", false, null, ct);
-        });
-
-    private static async Task<bool> CheckDependency(this IServiceProvider serviceProvider, string[] deps, CancellationToken ct)
-    => await CommandLineExt.ExecuteCommandAsync(async () =>
-    {
-        var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
-        return await linuxCommand.Common().Package().InstalledOrDefaultAsync(deps, false, null, ct);
-    });
 
     private static async Task<bool> HasPreRequisite(this IServiceProvider serviceProvider, CancellationToken ct)
     {
         bool pass = true;
         pass = await serviceProvider.CheckUsernameExist(ct);
         if (!pass) return false;
-        pass = await serviceProvider.CheckDependency(["sudo"], ct);
+        pass = await serviceProvider.CheckDependency(BaseInfo.dependencies, ct);
         if (!pass) return false;
         return pass;
     }
@@ -38,7 +20,7 @@ public static class RuntimeExt
     /// <summary>
     /// This need to be runing first before any subsequent logic
     /// </summary>
-    public static async Task RunStartupCommandAsync(this IServiceProvider services, CancellationToken ct, params string[] args)
+    internal static async Task RunStartupCommandAsync(this IServiceProvider services, CancellationToken ct, params string[] args)
     {
         // id -u username >/dev/null 2>&1 && echo true || echo false
         bool prerequisite = await services.HasPreRequisite(ct);

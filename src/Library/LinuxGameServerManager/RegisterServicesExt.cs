@@ -1,4 +1,5 @@
-﻿using LunaticPanel.Core.Utils;
+﻿using GameHost.Games.Lib.LinuxGameServerManager.Engine;
+using LunaticPanel.Core.Utils;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager;
@@ -9,6 +10,11 @@ public static class RegisterServicesExt
     {
         services.AddLinuxCommandUtilityService();
         services.AddCrazyReportUtilityService();
+        services.AddScoped<ILinuxGameServerManagerService, LinuxGameServerManagerService>();
+        services.AddScoped<IServerInstallService, ServerInstallService>();
+        services.AddScoped<IServerControlService, ServerControlService>();
+        services.AddScoped<IServerBackupService, ServerBackupService>();
+
     }
 
 }

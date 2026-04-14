@@ -1,4 +1,4 @@
-﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response.ValueObjects;
+﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response.Enums;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response;
 /*
@@ -28,10 +28,7 @@ No. of backups:    1
 DESCRIPTION  DIRECTION  PORT   PROTOCOL
 > Game/RCON  INBOUND    27015  tcp/udp
  */
-public sealed record DetailsResponse
+public sealed record DetailsResponse(string Line, DetailType DetailType = DetailType.None)
 {
-    public OperatingSystemInfoResponse? OperatingSystemInfo { get; init; }
-    public PerformanceInfoResponse? Performance { get; init; }
-    public ConnectionInfoResponse ConnectionInfo { get; init; } = default!;
-    public ServiceInformationResponse ServiceInformation { get; init; } = default!;
+
 }
