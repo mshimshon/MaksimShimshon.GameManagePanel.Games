@@ -118,3 +118,4 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
 
     public Task<IEnumerable<string>> CheckUpdateGameAsync(string serverName, CancellationToken ct = default)
         => _serverInstallService.CheckUpdateGameServerAsync(serverName, ct);
+}

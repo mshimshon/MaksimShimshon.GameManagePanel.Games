@@ -368,6 +368,11 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
+        }
       }
     },
     "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj": {
@@ -727,6 +732,11 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameHost.Games.Lib.LinuxGameServerManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6dba0f560aa802de0261ef76ac35bacdbe30d3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5606e371aabefc5279106a8222278c04569be524")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameHost.Games.Lib.LinuxGameServerManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameHost.Games.Lib.LinuxGameServerManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
