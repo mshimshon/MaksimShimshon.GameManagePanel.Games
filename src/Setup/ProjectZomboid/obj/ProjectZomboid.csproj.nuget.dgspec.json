@@ -31,10 +31,11 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj"
+              "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj"
               }
             }
           }
@@ -53,6 +54,7 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "LunaticPanel.Core.Utils": {
@@ -92,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -368,11 +370,6 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
-        }
       }
     },
     "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\LinuxGameServerManager\\LinuxGameServerManager.csproj": {
@@ -402,6 +399,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -420,6 +418,7 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "LunaticPanel.Core.Utils": {
@@ -455,7 +454,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -730,11 +729,6 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
-        }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
         }
       }
     },
@@ -765,6 +759,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
               "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\Installation\\Installation.csproj": {
@@ -773,8 +768,8 @@
               "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\LinuxGameServerManager\\LinuxGameServerManager.csproj": {
                 "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\LinuxGameServerManager\\LinuxGameServerManager.csproj"
               },
-              "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj": {
-                "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj"
+              "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj"
               }
             }
           }
@@ -793,6 +788,7 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "LunaticPanel.Core.Utils": {
@@ -815,18 +811,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[10.0.5, 10.0.5]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1102,21 +1092,16 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
-        }
       }
     },
-    "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj": {
       "version": "0.1.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj",
-        "projectName": "MaksimShimshon.GameManagePanel.Core",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\MaksimShimshon.GameManagePanel.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj",
+        "projectName": "GameHost.Core",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\MaksimShimshon.GameManagePanel\\MaksimShimshon.GameManagePanel.Core\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
@@ -1137,6 +1122,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -1155,20 +1141,21 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "centralPackageVersions": {
             "CoreMap": "1.1.2",
-            "LunaticPanel.Core": "0.1.804",
-            "LunaticPanel.Core.Abstraction": "0.1.804",
-            "LunaticPanel.Core.Extensions": "0.1.804",
-            "LunaticPanel.Core.Utils.Abstraction": "0.1.804",
-            "LunaticPanel.Engine.Keys": "0.1.804",
+            "LunaticPanel.Core": "0.1.812",
+            "LunaticPanel.Core.Abstraction": "0.1.812",
+            "LunaticPanel.Core.Extensions": "0.1.812",
+            "LunaticPanel.Core.Utils.Abstraction": "0.1.812",
+            "LunaticPanel.Engine.Keys": "0.1.812",
             "MediHater": "1.0.0",
-            "Microsoft.AspNetCore.Components": "10.0.5",
+            "Microsoft.AspNetCore.Components": "10.0.6",
             "Microsoft.AspNetCore.Components.Web": "10.0.3",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.1",
             "Microsoft.Extensions.FileProviders.Physical": "10.0.5",
-            "Microsoft.Extensions.Logging": "10.0.5",
+            "Microsoft.Extensions.Logging": "10.0.6",
             "Microsoft.Extensions.Logging.Abstractions": "10.0.1",
             "MudBlazor": "9.3.0",
             "Newtonsoft.Json": "13.0.4",
@@ -1191,7 +1178,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1466,11 +1453,6 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
-        }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
         }
       }
     }

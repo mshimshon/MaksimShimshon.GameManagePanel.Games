@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\MaksimShimshon.GameManagePanel\src\MaksimShimshon.GameManagePanel\MaksimShimshon.GameManagePanel.Core\MaksimShimshon.GameManagePanel.Core.csproj" />
+	  <ProjectReference Include="..\..\..\..\MaksimShimshon.GameManagePanel\src\GameHost.Core\GameHost.Core.csproj" />
 	  <ProjectReference Include="..\..\Library\Installation\Installation.csproj" />
 	  <ProjectReference Include="..\..\Library\LinuxGameServerManager\LinuxGameServerManager.csproj" />
 	</ItemGroup>

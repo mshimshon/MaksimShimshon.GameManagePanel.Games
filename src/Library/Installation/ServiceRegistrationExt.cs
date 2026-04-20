@@ -2,7 +2,7 @@
 using GameHost.Games.Lib.Installation.Services;
 using LunaticPanel.Core.Utils;
 using Microsoft.Extensions.DependencyInjection;
-using static MaksimShimshon.GameManagePanel.Core.BaseInfo;
+using static GameHost.Core.BaseInfo;
 
 namespace GameHost.Games.Lib.Installation;
 
