@@ -35,8 +35,6 @@ C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Set
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\zh-Hant\System.CommandLine.resources.dll
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\GameHost.Games.Lib.Installation.dll
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\GameHost.Games.Lib.LinuxGameServerManager.dll
-C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\MaksimShimshon.GameManagePanel.Core.dll
-C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\MaksimShimshon.GameManagePanel.Core.pdb
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\GameHost.Games.Lib.Installation.pdb
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\GameHost.Games.Lib.LinuxGameServerManager.pdb
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\obj\Debug\net10.0\ProjectZomboid.csproj.AssemblyReference.cache
@@ -51,3 +49,5 @@ C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Set
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\obj\Debug\net10.0\GameHost.Games.ProjectZomboid.Console.pdb
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\obj\Debug\net10.0\ProjectZomboid.genruntimeconfig.cache
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\obj\Debug\net10.0\ref\GameHost.Games.ProjectZomboid.Console.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\GameHost.Core.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\GameHost.Core.pdb
