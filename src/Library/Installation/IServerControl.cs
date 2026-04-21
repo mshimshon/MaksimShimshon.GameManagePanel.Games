@@ -2,7 +2,7 @@
 
 namespace GameHost.Games.Lib.Installation;
 
-internal interface IServerControl
+public interface IServerControl
 {
     Task StartAsync(CancellationToken ct = default);
     Task StopAsync(CancellationToken ct = default);

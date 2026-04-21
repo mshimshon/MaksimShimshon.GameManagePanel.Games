@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameHost.Games.ProjectZomboid.Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5606e371aabefc5279106a8222278c04569be524")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb631a2759606aed806063ed326cf443618152b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameHost.Games.ProjectZomboid.Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameHost.Games.ProjectZomboid.Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

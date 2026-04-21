@@ -100,7 +100,7 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
                 failure = ex;
             }
             bool hasFailed = failure != default;
-            bool hasSucceeded = failure != default;
+            bool hasSucceeded = failure == default;
             if (ct.IsCancellationRequested) return;
             if (hasFailed && maxTry > 0)
             {

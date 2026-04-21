@@ -42,7 +42,7 @@ internal static class InstallationCommandHandlerExt
                     throw new CreateUsernameFailedException(resultUsercreate.StandardError);
             }
             var resultDepInstall = await linuxCommandService
-            .BuildCommand($"apt install -y {string.Join(' ', BaseInfo.dependencies)}")
+            .BuildCommand($"apt-get install -y {string.Join(' ', BaseInfo.dependencies)}")
             .ExecAsync();
             if (resultDepInstall.Failed)
                 throw new InstallDependenciesFailedException(resultDepInstall.StandardError);

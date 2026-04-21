@@ -1,0 +1,13 @@
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\bin\Release\net10.0\GameHost.Games.Lib.LinuxGameServerManager.deps.json
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\bin\Release\net10.0\GameHost.Games.Lib.LinuxGameServerManager.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\bin\Release\net10.0\GameHost.Games.Lib.LinuxGameServerManager.pdb
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\LinuxGameServerManager.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\LinuxGameServerManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\LinuxGameServerManager.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\LinuxGameServerManager.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\LinuxGameServerManager.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\LinuxGameServerManager.sourcelink.json
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\GameHost.Games.Lib.LinuxGameServerManager.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\refint\GameHost.Games.Lib.LinuxGameServerManager.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\GameHost.Games.Lib.LinuxGameServerManager.pdb
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\LinuxGameServerManager\obj\Release\net10.0\ref\GameHost.Games.Lib.LinuxGameServerManager.dll

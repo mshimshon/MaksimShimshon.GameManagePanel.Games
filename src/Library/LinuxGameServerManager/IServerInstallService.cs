@@ -1,6 +1,6 @@
 ﻿namespace GameHost.Games.Lib.LinuxGameServerManager;
 
-internal interface IServerInstallService
+public interface IServerInstallService
 {
     Task DownloadSoftwareAsync(string serverName, CancellationToken ct = default);
     Task UpdateSoftwareAsync(string serverName, CancellationToken ct = default);

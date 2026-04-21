@@ -1,0 +1,16 @@
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\bin\Debug\net10.0\GameHost.Games.Lib.Installation.deps.json
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\bin\Debug\net10.0\GameHost.Games.Lib.Installation.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\bin\Debug\net10.0\GameHost.Games.Lib.Installation.pdb
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\bin\Debug\net10.0\GameHost.Core.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\bin\Debug\net10.0\GameHost.Core.pdb
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installation.sourcelink.json
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\Installa.B154B0C0.Up2Date
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\GameHost.Games.Lib.Installation.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\refint\GameHost.Games.Lib.Installation.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\GameHost.Games.Lib.Installation.pdb
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Library\Installation\obj\Debug\net10.0\ref\GameHost.Games.Lib.Installation.dll

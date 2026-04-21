@@ -46,7 +46,7 @@ internal class ServerInstallService : IServerInstallService
     {
         string depInline = string.Join(' ', BaseInfo.Dependencies);
         var result = await _linuxCommand
-           .BuildCommand($"apt install -y {depInline}")
+           .BuildCommand($"apt-get install -y {depInline}")
            .ExecAsync(ct);
         if (result.Failed)
             throw new DownloadHasFailedException(result.StandardError, $"Couldn't install the one or more dependencies {depInline}.");

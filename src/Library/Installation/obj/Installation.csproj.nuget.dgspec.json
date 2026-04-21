@@ -31,7 +31,6 @@
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
               "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj": {
@@ -54,12 +53,11 @@
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.815, )"
+              "version": "[0.1.816, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
@@ -89,6 +87,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "version": "[10.0.6, 10.0.6]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
+              "version": "[10.0.6, 10.0.6]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -370,6 +378,11 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
+        }
       }
     },
     "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel\\src\\GameHost.Core\\GameHost.Core.csproj": {
@@ -400,7 +413,6 @@
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -419,16 +431,15 @@
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "centralPackageVersions": {
             "CoreMap": "1.1.2",
-            "LunaticPanel.Core": "0.1.815",
-            "LunaticPanel.Core.Abstraction": "0.1.815",
-            "LunaticPanel.Core.Extensions": "0.1.815",
+            "LunaticPanel.Core": "0.1.816",
+            "LunaticPanel.Core.Abstraction": "0.1.816",
+            "LunaticPanel.Core.Extensions": "0.1.816",
             "LunaticPanel.Core.Utils": "0.1.815",
-            "LunaticPanel.Core.Utils.Abstraction": "0.1.815",
-            "LunaticPanel.Engine.Keys": "0.1.815",
+            "LunaticPanel.Core.Utils.Abstraction": "0.1.816",
+            "LunaticPanel.Engine.Keys": "0.1.816",
             "MediHater": "1.0.0",
             "Microsoft.AspNetCore.Components": "10.0.6",
             "Microsoft.AspNetCore.Components.Web": "10.0.3",
@@ -452,6 +463,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+              "version": "[10.0.6, 10.0.6]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
+              "version": "[10.0.6, 10.0.6]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -732,6 +753,11 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
+        }
+      },
+      "runtimes": {
+        "linux-x64": {
+          "#import": []
         }
       }
     }

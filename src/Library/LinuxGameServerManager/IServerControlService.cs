@@ -2,7 +2,7 @@
 
 namespace GameHost.Games.Lib.LinuxGameServerManager;
 
-internal interface IServerControlService
+public interface IServerControlService
 {
     Task ConsoleAsync(string serverName, Func<string, Task> consoleStream, CancellationToken ct = default);
     Task<IReadOnlyCollection<DetailsResponse>> DetailsAsync(string serverName, bool hideSensitive = false, CancellationToken ct = default);
