@@ -1,23 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "LRx/BNPcACM=",
+  "dgSpecHash": "6J6JkkE2e+U=",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\Steam\\Steam.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils\\0.1.816\\lunaticpanel.core.utils.0.1.816.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils.abstraction\\0.1.816\\lunaticpanel.core.utils.abstraction.0.1.816.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.6\\microsoft.extensions.configuration.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.6\\microsoft.extensions.configuration.abstractions.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.6\\microsoft.extensions.configuration.binder.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.6\\microsoft.extensions.dependencyinjection.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.6\\microsoft.extensions.dependencyinjection.abstractions.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging\\10.0.6\\microsoft.extensions.logging.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.6\\microsoft.extensions.logging.abstractions.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.configuration\\10.0.6\\microsoft.extensions.logging.configuration.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.console\\10.0.6\\microsoft.extensions.logging.console.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options\\10.0.6\\microsoft.extensions.options.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\10.0.6\\microsoft.extensions.options.configurationextensions.10.0.6.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.6\\microsoft.extensions.primitives.10.0.6.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils\\0.1.820\\lunaticpanel.core.utils.0.1.820.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils.abstraction\\0.1.820\\lunaticpanel.core.utils.abstraction.0.1.820.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.7\\microsoft.extensions.configuration.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.7\\microsoft.extensions.configuration.abstractions.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.7\\microsoft.extensions.configuration.binder.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.7\\microsoft.extensions.dependencyinjection.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.7\\microsoft.extensions.dependencyinjection.abstractions.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging\\10.0.7\\microsoft.extensions.logging.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.7\\microsoft.extensions.logging.abstractions.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.configuration\\10.0.7\\microsoft.extensions.logging.configuration.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.logging.console\\10.0.7\\microsoft.extensions.logging.console.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options\\10.0.7\\microsoft.extensions.options.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\10.0.7\\microsoft.extensions.options.configurationextensions.10.0.7.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.7\\microsoft.extensions.primitives.10.0.7.nupkg.sha512"
   ],
   "logs": []
 }

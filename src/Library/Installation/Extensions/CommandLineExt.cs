@@ -10,14 +10,14 @@ internal static class CommandLineExt
     private static PayloadBuilderService _payloadBuilderService = new PayloadBuilderService();
     internal static async Task<bool> ExecuteCommandAsync(Func<Task> task)
     {
-        bool success = await ExecuteCommandAsync(async () =>
+        bool success = await ExecuteCommandResultAsync(async () =>
         {
             await task();
             return "Success";
         });
         return success;
     }
-    internal static async Task<bool> ExecuteCommandAsync(Func<Task<object?>> task)
+    internal static async Task<bool> ExecuteCommandResultAsync(Func<Task<object?>> task)
     {
         bool success = false;
         try
@@ -42,6 +42,8 @@ internal static class CommandLineExt
             //Console.Error.WriteLine(ex);
             // TODO: LOG
             await _payloadBuilderService.PrintAsync(outResult);
+
+
             return success;
         }
     }
@@ -55,8 +57,9 @@ internal static class CommandLineExt
         return command;
     }
 
-    internal static Command PrintHelp(this Command command)
+    internal static async Task PrintHelp(this Command command)
     {
+
         foreach (var option in command.Options)
         {
             Console.Error.WriteLine($"{string.Join(',', [option.Name, .. option.Aliases])} - {option.Description}");
@@ -65,7 +68,12 @@ internal static class CommandLineExt
         {
             Console.Error.WriteLine($"{string.Join(',', [subCommand.Name, .. subCommand.Aliases])} - {subCommand.Description}");
         }
-        return command;
+        var outResult = new ResultResponse()
+        {
+            Data = "Command not available"
+        };
+        await _payloadBuilderService.PrintAsync(outResult);
+
     }
     internal static RootCommand WithSubCommand(this RootCommand rootCommand, Command command)
     {

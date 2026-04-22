@@ -1,5 +1,6 @@
 ﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response;
 using GameHost.Games.Lib.LinuxGameServerManager.Exceptions;
+using LunaticPanel.Core.Utils.Abstraction.Logging;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Engine;
 
@@ -8,15 +9,18 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
     private readonly IServerInstallService _serverInstallService;
     private readonly IServerControlService _serverControlService;
     private readonly IServerBackupService _serverBackupService;
+    private readonly ICrazyReport<LinuxGameServerManagerService> _crazyReport;
 
     public LinuxGameServerManagerService(
         IServerInstallService serverInstallService,
         IServerControlService serverControlService,
-        IServerBackupService serverBackupService)
+        IServerBackupService serverBackupService, ICrazyReport<LinuxGameServerManagerService> crazyReport)
     {
         _serverInstallService = serverInstallService;
         _serverControlService = serverControlService;
         _serverBackupService = serverBackupService;
+        _crazyReport = crazyReport;
+        _crazyReport.SetModule("LGSM_Library");
     }
 
     public Task BackupAsync(string serverName, CancellationToken ct = default)
@@ -104,12 +108,21 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
             if (ct.IsCancellationRequested) return;
             if (hasFailed && maxTry > 0)
             {
+                _crazyReport.ReportErrorException(failure!.Message, failure);
+                _crazyReport.ReportInfo("Trial Retrying Now");
+
                 maxTry--;
                 continue;
             }
-            else if (hasSucceeded) break;
+            else if (hasSucceeded)
+            {
+                _crazyReport.ReportSuccess("Trial Operation Successful");
+                break;
+            }
             else
             {
+                _crazyReport.ReportErrorException(failure!.Message, failure);
+                _crazyReport.ReportError("Trial Stopped No More Try");
                 throw failure!;
             }
 

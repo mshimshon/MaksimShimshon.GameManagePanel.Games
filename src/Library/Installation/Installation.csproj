@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LunaticPanel.Core.Utils" Version="0.1.816" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.6" />
-    <PackageReference Include="System.CommandLine" Version="2.0.6" />
+    <PackageReference Include="LunaticPanel.Core.Utils" Version="0.1.820" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.7" />
+    <PackageReference Include="System.CommandLine" Version="2.0.7" />
   </ItemGroup>
 
   <ItemGroup>

@@ -25,6 +25,8 @@ public static class RuntimeExt
         // id -u username >/dev/null 2>&1 && echo true || echo false
         bool prerequisite = await services.HasPreRequisite(ct);
         var rootCommand = new RootCommand("Game Server Installation CLI");
+
+
         if (prerequisite)
         {
             var modCommand = new Command("mod", "All commands related to mods support.")
@@ -47,16 +49,43 @@ public static class RuntimeExt
 
             rootCommand.WithSubCommand(modCommand)
                 .WithSubCommand(setupCommand)
-                .WithSubCommand(serverCommand);
+                .WithSubCommand(serverCommand).SetRootAction();
         }
         else
         {
             var initCommand = new Command("initialize", "Command to install and setup all prerequisite for the installation of new game server.")
-                .SetServerAction(services);
+                .SetInitializingAction(services);
+
+            rootCommand.WithSubCommand(initCommand)
+                .SetRootAction();
+
+        }
+        var cmdParsed = rootCommand.Parse(args);
+
+        if (cmdParsed.Errors.Count > 0)
+        {
+            await rootCommand.PrintHelp();
+        }
+        else
+        {
+            await cmdParsed.InvokeAsync(null, ct);
         }
 
+    }
 
+    internal static RootCommand SetRootAction(this RootCommand command)
+    {
+        command.SetAction(async (parseResult, ct) =>
+        {
+            foreach (var item in command.Subcommands)
+            {
+                if (parseResult.GetValue<bool>(item.Name))
+                    return;
+            }
 
-        await rootCommand.Parse(args).InvokeAsync(null, ct);
+            await command.PrintHelp();
+
+        });
+        return command;
     }
 }

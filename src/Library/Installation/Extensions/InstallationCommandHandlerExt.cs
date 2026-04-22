@@ -18,11 +18,11 @@ internal static class InstallationCommandHandlerExt
             else if (parseResult.GetValue<bool>("--update"))
                 await ExecuteCommandAsync(async () => await serviceServerInstallation.UpdateAsync(ct));
             else if (parseResult.GetValue<bool>("--version"))
-                await ExecuteCommandAsync(async () => await serviceServerInstallation.GetVersionAsync(ct));
+                await ExecuteCommandResultAsync(async () => await serviceServerInstallation.GetVersionAsync(ct));
             else if (parseResult.GetValue<bool>("--check-update"))
-                await ExecuteCommandAsync(async () => await serviceServerInstallation.CheckUpdateAsync(ct));
+                await ExecuteCommandResultAsync(async () => await serviceServerInstallation.CheckUpdateAsync(ct));
             else
-                command.PrintHelp();
+                await command.PrintHelp();
         });
         return command;
     }

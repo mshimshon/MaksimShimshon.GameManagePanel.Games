@@ -1,5 +1,4 @@
 ﻿using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
-using LunaticPanel.Core.Utils.Abstraction.LinuxCommand.Helper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameHost.Games.Lib.Installation.Extensions;
@@ -7,17 +6,26 @@ namespace GameHost.Games.Lib.Installation.Extensions;
 internal static class HelperCommandExt
 {
     public static async Task<bool> CheckUsernameExist(this IServiceProvider serviceProvider, CancellationToken ct = default)
-        => await CommandLineExt.ExecuteCommandAsync(() =>
-        {
-            var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
-            return linuxCommand.BoolCommandAsync($"id -u {BaseInfo.USERNAME} >/dev/null", ct);
-        });
+    {
+        var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
+        var result = await linuxCommand
+            .BuildCommand($"id -u {BaseInfo.USERNAME} >/dev/null")
+            .AndPrintPayload(bool.TrueString)
+            .OrPrintPayload(bool.FalseString)
+            .ExecPayloadAsync<bool>();
+        return result;
+    }
+
 
     public static async Task<bool> CheckDependency(this IServiceProvider serviceProvider, string[] deps, CancellationToken ct = default)
-        => await CommandLineExt.ExecuteCommandAsync(() =>
-        {
-            var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
-            return linuxCommand.BoolCommandAsync($"dpkg -s {string.Join(' ', deps)} >/dev/null", ct);
-        });
+    {
+        var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
+        var result = await linuxCommand
+    .BuildCommand($"dpkg -s {string.Join(' ', deps)} >/dev/null")
+    .AndPrintPayload(bool.TrueString)
+    .OrPrintPayload(bool.FalseString)
+    .ExecPayloadAsync<bool>();
+        return result;
+    }
 
 }
