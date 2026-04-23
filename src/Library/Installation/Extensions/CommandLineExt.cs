@@ -70,7 +70,8 @@ internal static class CommandLineExt
         }
         var outResult = new ResultResponse()
         {
-            Data = "Command not available"
+            Error = new ErrorResponse(nameof(PrintHelp), "Command not available")
+
         };
         await _payloadBuilderService.PrintAsync(outResult);
 
