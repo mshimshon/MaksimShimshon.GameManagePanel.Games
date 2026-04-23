@@ -21,11 +21,12 @@ internal static class HelperCommandExt
     {
         var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
         var result = await linuxCommand
-    .BuildCommand($"dpkg -s {string.Join(' ', deps)} >/dev/null")
-    .AndPrintPayload(bool.TrueString)
-    .OrPrintPayload(bool.FalseString)
-    .ExecPayloadAsync<bool>();
+            .BuildCommand($"dpkg -s {string.Join(' ', deps)} >/dev/null")
+            .AndPrintPayload(bool.TrueString)
+            .OrPrintPayload(bool.FalseString)
+            .ExecPayloadAsync<bool>();
         return result;
     }
+
 
 }

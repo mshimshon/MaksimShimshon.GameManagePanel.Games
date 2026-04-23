@@ -9,11 +9,13 @@ namespace GameHost.Games.ProjectZomboid.Console.Services;
 internal class ServerInstallationService : IServerInstallation
 {
     private readonly ILinuxGameServerManagerService _linuxGameServerManagerService;
+    private readonly IDistroDependencyFileService _distroDependencyFileService;
     private readonly IPluginSystemLocation _pluginSystemLocation;
     private readonly IPluginUserLocation _pluginUserLocation;
-    public ServerInstallationService(ILinuxGameServerManagerService linuxGameServerManagerService, IPluginLocation pluginLocation)
+    public ServerInstallationService(ILinuxGameServerManagerService linuxGameServerManagerService, IDistroDependencyFileService distroDependencyFileService, IPluginLocation pluginLocation)
     {
         _linuxGameServerManagerService = linuxGameServerManagerService;
+        _distroDependencyFileService = distroDependencyFileService;
         _pluginSystemLocation = pluginLocation;
         _pluginUserLocation = pluginLocation;
         _pluginUserLocation.SetUsername(BaseInfo.USERNAME);
@@ -66,8 +68,13 @@ internal class ServerInstallationService : IServerInstallation
         // lib32gcc-s1
         // lib32stdc++6
         // lib32z1
+        await _distroDependencyFileService.DownloadOfficialDistroDependencyFile(ct);
+        await _distroDependencyFileService.InstallDependenciesAsync(BaseInfo.SERVER_NAME, ct);
         await _linuxGameServerManagerService.InstallAsync(BaseInfo.SERVER_NAME, ct);
     }
+
+    public Task InstallDependenciesAsync(CancellationToken ct = default) => throw new NotImplementedException();
+
     public async Task UpdateAsync(CancellationToken ct = default)
     {
         await _linuxGameServerManagerService.UpdateSoftwareAsync(BaseInfo.SERVER_NAME, ct);

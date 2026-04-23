@@ -49,15 +49,14 @@ public static class RuntimeExt
 
             rootCommand.WithSubCommand(modCommand)
                 .WithSubCommand(setupCommand)
-                .WithSubCommand(serverCommand).SetRootAction();
+                .WithSubCommand(serverCommand);
         }
         else
         {
             var initCommand = new Command("initialize", "Command to install and setup all prerequisite for the installation of new game server.")
                 .SetInitializingAction(services);
 
-            rootCommand.WithSubCommand(initCommand)
-                .SetRootAction();
+            rootCommand.WithSubCommand(initCommand);
 
         }
         var cmdParsed = rootCommand.Parse(args);
@@ -65,27 +64,12 @@ public static class RuntimeExt
         if (cmdParsed.Errors.Count > 0)
         {
             await rootCommand.PrintHelp();
+            Environment.Exit(1);
         }
         else
         {
             await cmdParsed.InvokeAsync(null, ct);
         }
 
-    }
-
-    internal static RootCommand SetRootAction(this RootCommand command)
-    {
-        command.SetAction(async (parseResult, ct) =>
-        {
-            foreach (var item in command.Subcommands)
-            {
-                if (parseResult.GetValue<bool>(item.Name))
-                    return;
-            }
-
-            await command.PrintHelp();
-
-        });
-        return command;
     }
 }

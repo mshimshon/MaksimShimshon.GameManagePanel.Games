@@ -9,9 +9,12 @@ namespace GameHost.Games.Lib.Installation;
 
 public static class ServiceRegistrationExt
 {
-    internal static void AddInstallationServices(this IServiceCollection services)
+    public static void AddInstallationServices(this IServiceCollection services)
     {
         services.AddScoped<IServerModControl, DefaultServerModControlService>();
+        services.AddScoped<IServerBackupControl, DefaultServerBackupService>();
+        services.AddScoped<IServerDebugControl, DefaultServerDebugControlService>();
+        services.AddScoped<IDistroDependencyFileService, DistroDependencyFileService>();
         services.AddPluginLocationUtilityService(AssemblyName);
         services.AddLinuxCommandUtilityService();
         services.AddCrazyReportUtilityService();

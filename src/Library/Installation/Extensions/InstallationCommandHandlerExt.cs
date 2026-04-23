@@ -13,16 +13,21 @@ internal static class InstallationCommandHandlerExt
         command.SetAction(async (parseResult, ct) =>
         {
             var serviceServerInstallation = serviceProvider.GetRequiredService<IServerInstallation>();
+            bool success = false;
             if (parseResult.GetValue<bool>("--install"))
-                await ExecuteCommandAsync(async () => await serviceServerInstallation.InstallAsync(ct));
+                success = await ExecuteCommandAsync(async () => await serviceServerInstallation.InstallAsync(ct));
             else if (parseResult.GetValue<bool>("--update"))
-                await ExecuteCommandAsync(async () => await serviceServerInstallation.UpdateAsync(ct));
+                success = await ExecuteCommandAsync(async () => await serviceServerInstallation.UpdateAsync(ct));
             else if (parseResult.GetValue<bool>("--version"))
-                await ExecuteCommandResultAsync(async () => await serviceServerInstallation.GetVersionAsync(ct));
+                success = await ExecuteCommandResultAsync(async () => await serviceServerInstallation.GetVersionAsync(ct));
             else if (parseResult.GetValue<bool>("--check-update"))
-                await ExecuteCommandResultAsync(async () => await serviceServerInstallation.CheckUpdateAsync(ct));
+                success = await ExecuteCommandResultAsync(async () => await serviceServerInstallation.CheckUpdateAsync(ct));
             else
                 await command.PrintHelp();
+            if (success)
+                Environment.Exit(0);
+            else
+                Environment.Exit(1);
         });
         return command;
     }

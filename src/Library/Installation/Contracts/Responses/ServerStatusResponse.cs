@@ -5,6 +5,6 @@ namespace GameHost.Games.Lib.Installation.Contracts.Responses;
 
 public sealed record ServerStatusResponse
 {
-    public ServerStatus Status { get; init; } = ServerStatus.Unknown;
-    public ConnectionInfoResponse? ConnectionInfo { get; init; }
+    public ServerStatus Status { get; set; } = ServerStatus.Unknown;
+    public ConnectionInfoResponse? ConnectionInfo { get; set; }
 }

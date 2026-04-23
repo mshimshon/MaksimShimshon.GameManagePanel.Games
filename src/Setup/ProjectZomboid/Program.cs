@@ -4,9 +4,12 @@ using GameHost.Games.ProjectZomboid.Console.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = new ConsoleApplicationBuilder(args);
+builder.Services.AddInstallationServices();
+builder.Services.AddLinuxGameServerManagerServices();
+
 builder.Services.AddScoped<IServerInstallation, ServerInstallationService>();
 builder.Services.AddScoped<IServerControl, ServerControlService>();
-builder.Services.AddLinuxGameServerManagerServices();
+
 var app = builder.Build();
 
 await app.RunAsync();

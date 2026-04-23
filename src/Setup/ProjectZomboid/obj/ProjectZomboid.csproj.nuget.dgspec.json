@@ -57,7 +57,7 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.819, )"
+              "version": "[0.1.820, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
@@ -434,7 +434,7 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.819, )"
+              "version": "[0.1.820, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
@@ -817,7 +817,7 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.819, )"
+              "version": "[0.1.820, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
