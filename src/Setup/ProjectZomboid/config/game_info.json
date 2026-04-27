@@ -1,6 +1,6 @@
 {
   "name": "Project Zomboid",
-  "id": "",
+  "id": "GameHost.Games.ProjectZomboid.Console",
   "SupportedPlatform": [ "Debian 12", "Debian 13" ],
   "steam": true,
   "steam_app_id": "108600",

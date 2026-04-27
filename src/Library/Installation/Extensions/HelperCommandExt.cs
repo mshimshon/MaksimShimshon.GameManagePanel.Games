@@ -1,31 +1,25 @@
 ﻿using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace GameHost.Games.Lib.Installation.Extensions;
 
 internal static class HelperCommandExt
 {
-    public static async Task<bool> CheckUsernameExist(this IServiceProvider serviceProvider, CancellationToken ct = default)
+    public static LinuxCommandBuilderContext CheckUsernameExistCommand(this ILinuxCommand linuxCommand)
     {
-        var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
-        var result = await linuxCommand
+        LinuxCommandBuilderContext? result = linuxCommand
             .BuildCommand($"id -u {BaseInfo.USERNAME} >/dev/null")
             .AndPrintPayload(bool.TrueString)
-            .OrPrintPayload(bool.FalseString)
-            .ExecPayloadAsync<bool>();
+            .OrPrintPayload(bool.FalseString);
         return result;
     }
 
 
-    public static async Task<bool> CheckDependency(this IServiceProvider serviceProvider, string[] deps, CancellationToken ct = default)
+    public static LinuxCommandBuilderContext CheckDependencyCommand(this ILinuxCommand linuxCommand, string[] deps)
     {
-        var linuxCommand = serviceProvider.GetRequiredService<ILinuxCommand>();
-        var result = await linuxCommand
+        return linuxCommand
             .BuildCommand($"dpkg -s {string.Join(' ', deps)} >/dev/null")
             .AndPrintPayload(bool.TrueString)
-            .OrPrintPayload(bool.FalseString)
-            .ExecPayloadAsync<bool>();
-        return result;
+            .OrPrintPayload(bool.FalseString);
     }
 
 

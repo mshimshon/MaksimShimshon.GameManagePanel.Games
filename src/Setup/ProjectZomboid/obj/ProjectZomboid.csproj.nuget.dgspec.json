@@ -59,7 +59,7 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.820, )"
+              "version": "[0.1.823, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
@@ -423,7 +423,7 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.820, )"
+              "version": "[0.1.823, )"
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
@@ -793,7 +793,7 @@
           "dependencies": {
             "LunaticPanel.Core.Utils": {
               "target": "Package",
-              "version": "[0.1.820, )"
+              "version": "[0.1.823, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
@@ -1145,12 +1145,12 @@
           "targetAlias": "net10.0",
           "centralPackageVersions": {
             "CoreMap": "1.1.2",
-            "LunaticPanel.Core": "0.1.820",
-            "LunaticPanel.Core.Abstraction": "0.1.820",
-            "LunaticPanel.Core.Extensions": "0.1.820",
-            "LunaticPanel.Core.Utils": "0.1.820",
-            "LunaticPanel.Core.Utils.Abstraction": "0.1.820",
-            "LunaticPanel.Engine.Keys": "0.1.820",
+            "LunaticPanel.Core": "0.1.823",
+            "LunaticPanel.Core.Abstraction": "0.1.823",
+            "LunaticPanel.Core.Extensions": "0.1.823",
+            "LunaticPanel.Core.Utils": "0.1.823",
+            "LunaticPanel.Core.Utils.Abstraction": "0.1.823",
+            "LunaticPanel.Engine.Keys": "0.1.823",
             "MediHater": "1.0.0",
             "Microsoft.AspNetCore.Components": "10.0.7",
             "Microsoft.AspNetCore.Components.Web": "10.0.3",
@@ -1158,7 +1158,7 @@
             "Microsoft.Extensions.FileProviders.Physical": "10.0.5",
             "Microsoft.Extensions.Logging": "10.0.7",
             "Microsoft.Extensions.Logging.Abstractions": "10.0.1",
-            "MudBlazor": "9.3.0",
+            "MudBlazor": "9.4.0",
             "Newtonsoft.Json": "13.0.4",
             "StatePulse.Net": "2.2.1",
             "StatePulse.Net.Abstractions": "2.2.1"

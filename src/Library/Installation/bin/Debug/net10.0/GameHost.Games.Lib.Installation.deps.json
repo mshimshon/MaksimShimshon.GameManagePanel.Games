@@ -9,7 +9,7 @@
       "GameHost.Games.Lib.Installation/1.0.0": {
         "dependencies": {
           "GameHost.Core": "0.1.0",
-          "LunaticPanel.Core.Utils": "0.1.820",
+          "LunaticPanel.Core.Utils": "0.1.823",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.7",
           "Microsoft.Extensions.Logging": "10.0.7",
           "Microsoft.Extensions.Logging.Console": "10.0.7",
@@ -19,24 +19,24 @@
           "GameHost.Games.Lib.Installation.dll": {}
         }
       },
-      "LunaticPanel.Core.Utils/0.1.820": {
+      "LunaticPanel.Core.Utils/0.1.823": {
         "dependencies": {
-          "LunaticPanel.Core.Utils.Abstraction": "0.1.820",
+          "LunaticPanel.Core.Utils.Abstraction": "0.1.823",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.7",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.7"
         },
         "runtime": {
           "lib/net10.0/LunaticPanel.Core.Utils.dll": {
-            "assemblyVersion": "0.1.820.0",
-            "fileVersion": "0.1.820.0"
+            "assemblyVersion": "0.1.823.0",
+            "fileVersion": "0.1.823.0"
           }
         }
       },
-      "LunaticPanel.Core.Utils.Abstraction/0.1.820": {
+      "LunaticPanel.Core.Utils.Abstraction/0.1.823": {
         "runtime": {
           "lib/net10.0/LunaticPanel.Core.Utils.Abstraction.dll": {
-            "assemblyVersion": "0.1.820.0",
-            "fileVersion": "0.1.820.0"
+            "assemblyVersion": "0.1.823.0",
+            "fileVersion": "0.1.823.0"
           }
         }
       },
@@ -251,19 +251,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "LunaticPanel.Core.Utils/0.1.820": {
+    "LunaticPanel.Core.Utils/0.1.823": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u+8KI+sGsPpiT4tv9woIyCJ9L3VwdrJiQ8xsCAjvbHpL98iD/5ay4ZfAvnOoi+koiokXcrpKtfSXS3klhBTwag==",
-      "path": "lunaticpanel.core.utils/0.1.820",
-      "hashPath": "lunaticpanel.core.utils.0.1.820.nupkg.sha512"
+      "sha512": "sha512-OKh44RhekxfsSyhQHtLKmn8oZbko4/GaY4qaGyE3QpYDnV3QTzyu0rGJ3JtHKU7DKgAF407X+ZDb+xiBAXLFcQ==",
+      "path": "lunaticpanel.core.utils/0.1.823",
+      "hashPath": "lunaticpanel.core.utils.0.1.823.nupkg.sha512"
     },
-    "LunaticPanel.Core.Utils.Abstraction/0.1.820": {
+    "LunaticPanel.Core.Utils.Abstraction/0.1.823": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gwEjPc+5vceVkEmybfsf7kXzop/eJ1xpASS6AnhkiGwiaBie2adsXoyhlcTBoW2t4MWbxULd8gctVIw+FXk9vA==",
-      "path": "lunaticpanel.core.utils.abstraction/0.1.820",
-      "hashPath": "lunaticpanel.core.utils.abstraction.0.1.820.nupkg.sha512"
+      "sha512": "sha512-XQ79aT6VPCHrd6ShvP79/Fq0d5qgfbN5gut5Pe/k3fihxFBZYuD6O08xn4ggTTBKnuQthV88kOs+gumbI8ijtA==",
+      "path": "lunaticpanel.core.utils.abstraction/0.1.823",
+      "hashPath": "lunaticpanel.core.utils.abstraction.0.1.823.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/10.0.7": {
       "type": "package",

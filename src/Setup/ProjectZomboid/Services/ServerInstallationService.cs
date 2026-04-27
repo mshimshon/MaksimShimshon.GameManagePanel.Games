@@ -23,7 +23,7 @@ internal class ServerInstallationService : IServerInstallation
 
     public async Task<ServerUpdateResponse?> CheckUpdateAsync(CancellationToken ct = default)
     {
-        var result = await _linuxGameServerManagerService.CheckUpdateGameAsync(BaseInfo.SERVER_NAME, ct);
+        var result = await _linuxGameServerManagerService.CheckUpdateGameAsync(BaseInfo.LGSM_SERVER_ID, ct);
         string localExtracted = "", remoteExtracted = "";
         bool isDone = false;
         foreach (var item in result)
@@ -54,12 +54,14 @@ internal class ServerInstallationService : IServerInstallation
         };
     }
 
+    public Task<ServerIdentityResponse> GetServerIdentityAsync(CancellationToken ct = default) => throw new NotImplementedException();
+
     public async Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default)
     {
         var result = await CheckUpdateAsync(ct);
         return result?.CurrentVersion;
     }
-    public async Task InstallAsync(CancellationToken ct = default)
+    public async Task InstallAsync(Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
         // sudo apt install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils
         // bc
@@ -69,15 +71,15 @@ internal class ServerInstallationService : IServerInstallation
         // lib32stdc++6
         // lib32z1
         await _distroDependencyFileService.DownloadOfficialDistroDependencyFile(ct);
-        await _distroDependencyFileService.InstallDependenciesAsync(BaseInfo.SERVER_NAME, ct);
-        await _linuxGameServerManagerService.InstallAsync(BaseInfo.SERVER_NAME, ct);
+        await _distroDependencyFileService.InstallDependenciesAsync(BaseInfo.SERVER_ID, ct);
+        await _linuxGameServerManagerService.InstallAsync(BaseInfo.LGSM_SERVER_ID, ct);
     }
 
     public Task InstallDependenciesAsync(CancellationToken ct = default) => throw new NotImplementedException();
 
     public async Task UpdateAsync(CancellationToken ct = default)
     {
-        await _linuxGameServerManagerService.UpdateSoftwareAsync(BaseInfo.SERVER_NAME, ct);
+        await _linuxGameServerManagerService.UpdateSoftwareAsync(BaseInfo.LGSM_SERVER_ID, ct);
         await _linuxGameServerManagerService.UpdateGameAsync(BaseInfo.USERNAME, ct);
     }
 }

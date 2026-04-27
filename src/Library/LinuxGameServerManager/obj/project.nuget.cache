@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "F/G4x9QIk7c=",
+  "dgSpecHash": "WI1ABs6ukZQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\MaksimShimshon.GameManagePanel.Games\\src\\Library\\LinuxGameServerManager\\LinuxGameServerManager.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils\\0.1.820\\lunaticpanel.core.utils.0.1.820.nupkg.sha512",
-    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils.abstraction\\0.1.820\\lunaticpanel.core.utils.abstraction.0.1.820.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils\\0.1.823\\lunaticpanel.core.utils.0.1.823.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\lunaticpanel.core.utils.abstraction\\0.1.823\\lunaticpanel.core.utils.abstraction.0.1.823.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.7\\microsoft.extensions.configuration.10.0.7.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.7\\microsoft.extensions.configuration.abstractions.10.0.7.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.binder\\10.0.7\\microsoft.extensions.configuration.binder.10.0.7.nupkg.sha512",

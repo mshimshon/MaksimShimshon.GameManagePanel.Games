@@ -18,6 +18,11 @@ public static class ServiceRegistrationExt
         services.AddPluginLocationUtilityService(AssemblyName);
         services.AddLinuxCommandUtilityService();
         services.AddCrazyReportUtilityService();
+        services.AddSafeFileWriterUtilityService();
         services.AddScoped<ICrazyReportCircuit, CrazyReportCircuit>();
+        services.AddScoped<IEngineInstallation, EngineInstallationService>();
+        services.AddScoped<IMetadataService, MetadataService>();
+        services.AddScoped<IEngineInitializerService, EngineInitializerService>();
     }
+
 }

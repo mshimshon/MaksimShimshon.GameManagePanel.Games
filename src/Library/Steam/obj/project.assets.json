@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     "net10.0": {
-      "LunaticPanel.Core.Utils/0.1.820": {
+      "LunaticPanel.Core.Utils/0.1.823": {
         "type": "package",
         "dependencies": {
-          "LunaticPanel.Core.Utils.Abstraction": "0.1.820",
+          "LunaticPanel.Core.Utils.Abstraction": "0.1.823",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.7",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.7"
         },
@@ -20,7 +20,7 @@
           }
         }
       },
-      "LunaticPanel.Core.Utils.Abstraction/0.1.820": {
+      "LunaticPanel.Core.Utils.Abstraction/0.1.823": {
         "type": "package",
         "compile": {
           "lib/net10.0/LunaticPanel.Core.Utils.Abstraction.dll": {
@@ -278,27 +278,27 @@
     }
   },
   "libraries": {
-    "LunaticPanel.Core.Utils/0.1.820": {
-      "sha512": "u+8KI+sGsPpiT4tv9woIyCJ9L3VwdrJiQ8xsCAjvbHpL98iD/5ay4ZfAvnOoi+koiokXcrpKtfSXS3klhBTwag==",
+    "LunaticPanel.Core.Utils/0.1.823": {
+      "sha512": "OKh44RhekxfsSyhQHtLKmn8oZbko4/GaY4qaGyE3QpYDnV3QTzyu0rGJ3JtHKU7DKgAF407X+ZDb+xiBAXLFcQ==",
       "type": "package",
-      "path": "lunaticpanel.core.utils/0.1.820",
+      "path": "lunaticpanel.core.utils/0.1.823",
       "files": [
         ".nupkg.metadata",
         "lib/net10.0/LunaticPanel.Core.Utils.dll",
         "lib/net10.0/LunaticPanel.Core.Utils.xml",
-        "lunaticpanel.core.utils.0.1.820.nupkg.sha512",
+        "lunaticpanel.core.utils.0.1.823.nupkg.sha512",
         "lunaticpanel.core.utils.nuspec"
       ]
     },
-    "LunaticPanel.Core.Utils.Abstraction/0.1.820": {
-      "sha512": "gwEjPc+5vceVkEmybfsf7kXzop/eJ1xpASS6AnhkiGwiaBie2adsXoyhlcTBoW2t4MWbxULd8gctVIw+FXk9vA==",
+    "LunaticPanel.Core.Utils.Abstraction/0.1.823": {
+      "sha512": "XQ79aT6VPCHrd6ShvP79/Fq0d5qgfbN5gut5Pe/k3fihxFBZYuD6O08xn4ggTTBKnuQthV88kOs+gumbI8ijtA==",
       "type": "package",
-      "path": "lunaticpanel.core.utils.abstraction/0.1.820",
+      "path": "lunaticpanel.core.utils.abstraction/0.1.823",
       "files": [
         ".nupkg.metadata",
         "lib/net10.0/LunaticPanel.Core.Utils.Abstraction.dll",
         "lib/net10.0/LunaticPanel.Core.Utils.Abstraction.xml",
-        "lunaticpanel.core.utils.abstraction.0.1.820.nupkg.sha512",
+        "lunaticpanel.core.utils.abstraction.0.1.823.nupkg.sha512",
         "lunaticpanel.core.utils.abstraction.nuspec"
       ]
     },
@@ -729,8 +729,8 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "LunaticPanel.Core.Utils >= 0.1.820",
-      "LunaticPanel.Core.Utils.Abstraction >= 0.1.820",
+      "LunaticPanel.Core.Utils >= 0.1.823",
+      "LunaticPanel.Core.Utils.Abstraction >= 0.1.823",
       "Microsoft.Extensions.DependencyInjection >= 10.0.7",
       "Microsoft.Extensions.Logging >= 10.0.7",
       "Microsoft.Extensions.Logging.Console >= 10.0.7"
@@ -791,11 +791,11 @@
         "dependencies": {
           "LunaticPanel.Core.Utils": {
             "target": "Package",
-            "version": "[0.1.820, )"
+            "version": "[0.1.823, )"
           },
           "LunaticPanel.Core.Utils.Abstraction": {
             "target": "Package",
-            "version": "[0.1.820, )"
+            "version": "[0.1.823, )"
           },
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",

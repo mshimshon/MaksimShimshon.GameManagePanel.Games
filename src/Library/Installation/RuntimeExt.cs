@@ -1,4 +1,6 @@
 ﻿using GameHost.Games.Lib.Installation.Extensions;
+using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
+using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 
 namespace GameHost.Games.Lib.Installation;
@@ -7,12 +9,14 @@ public static class RuntimeExt
 {
 
 
-    private static async Task<bool> HasPreRequisite(this IServiceProvider serviceProvider, CancellationToken ct)
+    private static async Task<bool> HasPreRequisite(this IServiceProvider sp, CancellationToken ct)
     {
+        var commandService = sp.GetRequiredService<ILinuxCommand>();
+
         bool pass = true;
-        pass = await serviceProvider.CheckUsernameExist(ct);
+        pass = await commandService.CheckUsernameExistCommand().ExecPayloadAsync<bool>(ct);
         if (!pass) return false;
-        pass = await serviceProvider.CheckDependency(BaseInfo.dependencies, ct);
+        pass = await commandService.CheckDependencyCommand(BaseInfo.dependencies).ExecPayloadAsync<bool>(ct);
         if (!pass) return false;
         return pass;
     }
