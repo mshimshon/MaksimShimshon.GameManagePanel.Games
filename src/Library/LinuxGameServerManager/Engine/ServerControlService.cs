@@ -15,6 +15,7 @@ internal class ServerControlService : IServerControlService
     }
     public Task ConsoleAsync(string serverName, Func<string, Task> consoleStream, CancellationToken ct = default) => throw new NotImplementedException();
 
+
     public async Task<IReadOnlyCollection<DetailsResponse>> DetailsAsync(string serverName, bool hideSensitive = false, CancellationToken ct = default)
     {
         string cmd = hideSensitive ? "postdetails" : "details";
@@ -37,8 +38,7 @@ internal class ServerControlService : IServerControlService
             }
             else if (item.Contains("======") && !capture)
             {
-                if (lastEntry != default)
-                    outputList.Remove(lastEntry);
+                if (lastEntry != default) outputList.Remove(lastEntry);
                 continue;
             }
             bool port =
@@ -46,7 +46,7 @@ internal class ServerControlService : IServerControlService
                 item.Contains("OUTBOUND", StringComparison.OrdinalIgnoreCase)) && (item.Contains("tcp", StringComparison.OrdinalIgnoreCase) ||
                 item.Contains("udp", StringComparison.OrdinalIgnoreCase));
 
-            lastEntry = new(item, port ? DetailType.Port : DetailType.None);
+            lastEntry = new(item, port ? DetailType.Port : DetailType.Unknown);
             outputList.Add(lastEntry);
         }
 

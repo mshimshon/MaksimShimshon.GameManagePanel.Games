@@ -1,4 +1,5 @@
 ﻿using GameHost.Games.Lib.LinuxGameServerManager.Engine;
+using GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtratorFactory.Extensions;
 using LunaticPanel.Core.Utils;
 using LunaticPanel.Core.Utils.Logging;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ public static class RegisterServicesExt
         services.AddScoped<IServerControlService, ServerControlService>();
         services.AddScoped<IServerBackupService, ServerBackupService>();
         services.AddScoped<ICrazyReportCircuit, CrazyReportCircuit>();
+        services.AddDetailExtratorFactory();
 
     }
 

@@ -28,7 +28,24 @@ No. of backups:    1
 DESCRIPTION  DIRECTION  PORT   PROTOCOL
 > Game/RCON  INBOUND    27015  tcp/udp
  */
-public sealed record DetailsResponse(string Line, DetailType DetailType = DetailType.None)
+public sealed record DetailsResponse
 {
+    public DetailsResponse(string raw, DetailType detailType = DetailType.Unknown)
+    {
+        Raw = raw;
+        DetailType = detailType;
+    }
+    public DetailsResponse(string raw, string key, string value, DetailType detailType = DetailType.Unknown)
+    {
+        Raw = raw;
+        Key = key;
+        Value = value;
+        DetailType = detailType;
+    }
 
+    public string Raw { get; }
+    public string? Key { get; }
+    public string? Value { get; }
+    public bool HasKeyPair => Key != default && Value != default;
+    public DetailType DetailType { get; }
 }

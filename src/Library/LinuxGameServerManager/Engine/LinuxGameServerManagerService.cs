@@ -69,16 +69,11 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
 
     private async Task ProcessWithLock(string lockFile, Func<Task> action, Func<Exception> onLockFailed, CancellationToken ct = default)
     {
-        bool skipClearing = false;
+        FileStream? lockHandle = default;
         try
         {
-            FileStream lockHandle = File.Open(lockFile, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None);
+            lockHandle = File.Open(lockFile, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None);
             await action();
-        }
-        catch (IOException)
-        {
-            skipClearing = true;
-            throw onLockFailed();
         }
         catch
         {
@@ -86,8 +81,13 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
         }
         finally
         {
-            if (!skipClearing && File.Exists(lockFile))
-                File.Delete(lockFile);
+            if (lockHandle != default)
+                try
+                {
+                    lockHandle.Close();
+                    File.Delete(lockFile);
+                }
+                catch { }
         }
     }
     private async Task TrialProcess(Func<Task> action, CancellationToken ct = default)

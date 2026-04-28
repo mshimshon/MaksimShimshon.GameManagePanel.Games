@@ -34,6 +34,7 @@ internal class EngineInstallationService : IEngineInstallation
 
     public async Task InstallAsync(Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
+
         string installStateFile = _pluginSystemLocation.GetConfigFor(LinuxGameServerKeys.MODULE_NAME, LinuxGameServerKeys.SERVER_INSTALL_STATE_FILE);
         if (File.Exists(installStateFile))
             throw new ServerAlreadyInstalledException();
@@ -83,11 +84,11 @@ internal class EngineInstallationService : IEngineInstallation
     public Task<ServerUpdateResponse?> CheckUpdateAsync(CancellationToken ct = default) => _serverInstallation.CheckUpdateAsync(ct);
     public Task UpdateAsync(CancellationToken ct = default) => _serverInstallation.UpdateAsync(ct);
     public Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default) => _serverInstallation.GetVersionAsync(ct);
-    public Task InstallDependenciesAsync(CancellationToken ct = default) => _serverInstallation.InstallDependenciesAsync(ct);
     public async Task InitializeAsync(CancellationToken ct = default)
     {
         await _engineInitializerService.InitializeAsync(ct);
         await _serverInstallation.InitializeAsync(ct);
+
     }
 
     public async Task PostInstallAsync(CancellationToken ct = default)

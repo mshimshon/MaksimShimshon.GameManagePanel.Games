@@ -1,6 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using GameHost.Games.Lib.Installation.Contracts.Responses.StartupParameters;
+using System.Text.Json.Serialization;
 
-namespace GameHost.Games.Lib.Installation.Contracts.Responses;
+namespace GameHost.Games.Lib.Installation.Contracts.Responses.GameInfo;
 
 public sealed class GameInfoResponse
 {

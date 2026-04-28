@@ -3,5 +3,6 @@
 public enum DetailType
 {
     Port,
-    None
+    IP, Status,
+    Unknown
 }

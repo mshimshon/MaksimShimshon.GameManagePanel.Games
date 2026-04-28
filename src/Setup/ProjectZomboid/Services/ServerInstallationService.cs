@@ -54,29 +54,29 @@ internal class ServerInstallationService : IServerInstallation
         };
     }
 
-    public Task<ServerIdentityResponse> GetServerIdentityAsync(CancellationToken ct = default) => throw new NotImplementedException();
+    public Task<ServerIdentityResponse> GetServerIdentityAsync(CancellationToken ct = default)
+        => Task.FromResult(new ServerIdentityResponse()
+        {
+            DisplayName = BaseInfo.SERVER_NAME,
+            Id = BaseInfo.SERVER_ID
+        });
 
     public async Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default)
     {
         var result = await CheckUpdateAsync(ct);
         return result?.CurrentVersion;
     }
+
+    public Task InitializeAsync(CancellationToken ct = default) => Task.CompletedTask;
+
     public async Task InstallAsync(Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
-        // sudo apt install mailutils postfix curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils
-        // bc
-        // jq
-        // tmux
-        // lib32gcc-s1
-        // lib32stdc++6
-        // lib32z1
         await _distroDependencyFileService.DownloadOfficialDistroDependencyFile(ct);
         await _distroDependencyFileService.InstallDependenciesAsync(BaseInfo.SERVER_ID, ct);
         await _linuxGameServerManagerService.InstallAsync(BaseInfo.LGSM_SERVER_ID, ct);
     }
 
-    public Task InstallDependenciesAsync(CancellationToken ct = default) => throw new NotImplementedException();
-
+    public Task PostInstallAsync(CancellationToken ct = default) => Task.CompletedTask;
     public async Task UpdateAsync(CancellationToken ct = default)
     {
         await _linuxGameServerManagerService.UpdateSoftwareAsync(BaseInfo.LGSM_SERVER_ID, ct);

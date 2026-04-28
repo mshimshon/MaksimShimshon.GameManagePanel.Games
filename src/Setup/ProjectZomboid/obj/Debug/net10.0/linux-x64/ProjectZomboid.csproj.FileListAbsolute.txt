@@ -238,3 +238,7 @@ C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Set
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\libmscordbi.so
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\GameHost.Core.dll
 C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\GameHost.Core.pdb
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\config\dependencies.json
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\config\manifest.json
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\LinuxGameServerManager.Extension.dll
+C:\Users\Administrator\source\repos\MaksimShimshon.GameManagePanel.Games\src\Setup\ProjectZomboid\bin\Debug\net10.0\linux-x64\LinuxGameServerManager.Extension.pdb

@@ -1,4 +1,4 @@
-﻿namespace GameHost.Games.Lib.Installation.Contracts.Responses.Enums;
+﻿namespace GameHost.Games.Lib.Installation.Contracts.Responses.Status.Enums;
 
 public enum ServerStatus
 {

@@ -1,13 +1,11 @@
 ﻿using GameHost.Games.Lib.Installation.Contracts.Responses;
 using GameHost.Games.Lib.Installation.Contracts.Responses.ValueObjects;
-using GameHost.Games.Lib.Installation.Services;
 using System.CommandLine;
 
 namespace GameHost.Games.Lib.Installation.Extensions;
 
 internal static class CommandLineExt
 {
-    private static PayloadBuilderService _payloadBuilderService = new PayloadBuilderService();
     internal static async Task<bool> ExecuteCommandAsync(Func<Task> task)
     {
         bool success = await ExecuteCommandResultAsync(async () =>
@@ -29,7 +27,7 @@ internal static class CommandLineExt
                 Data = serviceResult
             };
 
-            await _payloadBuilderService.PrintAsync(outResult);
+            await outResult.PrintAsync();
             success = true;
             return success;
         }
@@ -41,7 +39,7 @@ internal static class CommandLineExt
             };
             //Console.Error.WriteLine(ex);
             // TODO: LOG
-            await _payloadBuilderService.PrintAsync(outResult);
+            await outResult.PrintAsync();
 
 
             return success;
@@ -73,7 +71,7 @@ internal static class CommandLineExt
             Error = new ErrorResponse(nameof(PrintHelp), "Command not available")
 
         };
-        await _payloadBuilderService.PrintAsync(outResult);
+        await outResult.PrintAsync();
 
     }
     internal static RootCommand WithSubCommand(this RootCommand rootCommand, Command command)

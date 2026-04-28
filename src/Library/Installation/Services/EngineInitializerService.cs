@@ -40,7 +40,7 @@ internal sealed class EngineInitializerService : IEngineInitializerService
         if (!isUsernameCreated)
         {
             var resultUsercreate = await _linuxCommand
-            .BuildCommand($"sudo adduser --home --system --shell /usr/sbin/nologin {BaseInfo.USERNAME} ")
+            .BuildCommand($"adduser --home --system --shell /usr/sbin/nologin {BaseInfo.USERNAME} ")
             .ExecAsync();
             if (resultUsercreate.Failed)
                 throw new CreateUsernameFailedException(resultUsercreate.StandardError);

@@ -13,11 +13,11 @@ internal static class ServerCommandHandlerExt
             var serviceServerControl = serviceProvider.GetRequiredService<IServerControl>();
             bool success = false;
             if (parseResult.GetValue<bool>("--start"))
-                success = await ExecuteCommandAsync(() => serviceServerControl.StartAsync(ct));
+                success = await ExecuteCommandAsync(() => { _ = serviceServerControl.StartAsync(ct); return Task.CompletedTask; });
             else if (parseResult.GetValue<bool>("--stop"))
-                success = await ExecuteCommandAsync(() => serviceServerControl.StopAsync(ct));
+                success = await ExecuteCommandAsync(() => { _ = serviceServerControl.StopAsync(ct); return Task.CompletedTask; });
             else if (parseResult.GetValue<bool>("--restart"))
-                success = await ExecuteCommandAsync(() => serviceServerControl.RestartAsync(ct));
+                success = await ExecuteCommandAsync(() => { _ = serviceServerControl.RestartAsync(ct); return Task.CompletedTask; });
             else if (parseResult.GetValue<bool>("--status"))
                 success = await ExecuteCommandResultAsync(async () => await serviceServerControl.StatusAsync(ct));
             else

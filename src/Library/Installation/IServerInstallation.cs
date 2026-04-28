@@ -9,7 +9,6 @@ public interface IServerInstallation
     Task<ServerUpdateResponse?> CheckUpdateAsync(CancellationToken ct = default);
     Task UpdateAsync(CancellationToken ct = default);
     Task<VersionResponse?> GetVersionAsync(CancellationToken ct = default);
-    Task InstallDependenciesAsync(CancellationToken ct = default);
     Task InitializeAsync(CancellationToken ct = default);
     Task PostInstallAsync(CancellationToken ct = default);
 }

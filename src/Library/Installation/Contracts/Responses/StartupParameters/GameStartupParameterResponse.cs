@@ -1,7 +1,7 @@
 ﻿using GameHost.Games.Lib.Installation.Providers;
 using System.Text.Json.Serialization;
 
-namespace GameHost.Games.Lib.Installation.Contracts.Responses;
+namespace GameHost.Games.Lib.Installation.Contracts.Responses.StartupParameters;
 
 public sealed class GameStartupParameterResponse
 {
@@ -14,8 +14,8 @@ public sealed class GameStartupParameterResponse
 
     [JsonConverter(typeof(JsonAlwaysStringConverter))]
     public string? DefaultValue { get; init; }
-    public GameStartupParameterValidationResponse? Validation { get; init; }
-    public GameStartupParameterRelatedToResponse? RelatedTo { get; init; }
+    public ValidationResponse? Validation { get; init; }
+    public RelatedToResponse? RelatedTo { get; init; }
     public string Category { get; init; } = default!;
     public string? Warning { get; init; }
 }

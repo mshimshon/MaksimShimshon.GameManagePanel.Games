@@ -1,6 +1,6 @@
-﻿namespace GameHost.Games.Lib.Installation.Contracts.Responses;
+﻿namespace GameHost.Games.Lib.Installation.Contracts.Responses.StartupParameters;
 
-public sealed class GameStartupParameterRelatedToResponse
+public sealed class RelatedToResponse
 {
     public string Key { get; init; } = default!;
     public string Constraint { get; init; } = default!;
