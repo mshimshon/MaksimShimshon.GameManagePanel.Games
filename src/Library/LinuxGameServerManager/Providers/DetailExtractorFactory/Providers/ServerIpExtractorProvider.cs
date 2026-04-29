@@ -7,17 +7,18 @@ namespace GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtractorFac
 
 internal class ServerIpExtractorProvider : IDetailExtractorProvider<ServerIpExtractorProvider>
 {
-
+    private const string INTERNET_IP_REGEX = @"^\s*(Internet\s+IP):\s*(\d{1,3}(?:\.\d{1,3}){3}(?::\d+)?)(?:\s*)$";
+    private const string LOCAL_IP_REGEX = @"^\s*(Server\s+IP):\s*(\d{1,3}(?:\.\d{1,3}){3}(?::\d+)?)(?:\s*)$";
     public DetailsResponse? Process(string line)
     {
-        StringComparison comparer = StringComparison.OrdinalIgnoreCase;
-        var match = Regex.Match(line, @"\b\d{1,3}(?:\.\d{1,3}){3}\b");
-        bool detectedIp = match.Success && line.StartsWith("Server IP:", comparer);
-        if (!detectedIp) return default;
-        List<string> keyValue = line.Split(':').ToList();
-        string key = keyValue[0].Trim();
-        keyValue.RemoveAt(0);
-        string value = string.Join(':', keyValue);
-        return new DetailsResponse(line, key, value, DetailType.IP);
+        var internetIp = Regex.Match(line, INTERNET_IP_REGEX);
+        var localIp = Regex.Match(line, LOCAL_IP_REGEX, RegexOptions.IgnoreCase);
+        Console.WriteLine($"{line} {internetIp.Success} {localIp.Success}");
+        if (!internetIp.Success && !localIp.Success) return default;
+        Match match = internetIp.Success ? internetIp : localIp;
+        DetailType detailType = internetIp.Success ? DetailType.PublicIp : DetailType.LocalIp;
+        string key = match.Groups[1].Value;     // "Internet IP"
+        string value = match.Groups[2].Value; // "5.2.214.234:16261"
+        return new DetailsResponse(line, key, value, detailType);
     }
 }

@@ -2,7 +2,7 @@
 
 public class ManifestNotFoundException : Exception
 {
-    public ManifestNotFoundException() : base("manifest.json was not found")
+    public ManifestNotFoundException() : base($"{BaseInfo.MANIFEST_FILENAME} was not found")
     {
     }
 }

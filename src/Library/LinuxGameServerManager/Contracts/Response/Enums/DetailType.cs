@@ -2,7 +2,9 @@
 
 public enum DetailType
 {
-    Port,
-    IP, Status,
-    Unknown
+    Port = 0,
+    PublicIp = 1,
+    LocalIp = 2,
+    Status = 3,
+    Unknown = -1
 }

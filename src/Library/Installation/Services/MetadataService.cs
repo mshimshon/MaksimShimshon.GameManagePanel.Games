@@ -11,18 +11,19 @@ internal class MetadataService : IMetadataService
 {
     private readonly ManifestResponse _manifest;
     private readonly GameInfoResponse _gameInfo;
-    private readonly IPluginSystemLocation _pluginSystemLocation;
+    private readonly IPluginUserLocation _pluginUserLocation;
 
     public MetadataService(IPluginLocation pluginLocation)
     {
-        _pluginSystemLocation = pluginLocation;
+        _pluginUserLocation = pluginLocation;
+        _pluginUserLocation.SetUsername(BaseInfo.USERNAME);
         _manifest = LoadManifest();
         _gameInfo = LoadGameInformation();
     }
     private ManifestResponse LoadManifest()
     {
-        string manifestFile = _pluginSystemLocation.
-            GetBashFor(LinuxGameServerKeys.MODULE_NAME, [BaseInfo.SERVER_CONTROL, BaseInfo.SERVER_CONTROL_CONFIG], BaseInfo.MANIFEST_FILENAME);
+        string manifestFile = _pluginUserLocation.
+            GetUserBashFor(LinuxGameServerKeys.MODULE_NAME, [BaseInfo.SERVER_CONTROL, BaseInfo.SERVER_CONTROL_CONFIG], BaseInfo.MANIFEST_FILENAME);
         if (!File.Exists(manifestFile)) throw new ManifestNotFoundException();
         try
         {
@@ -41,8 +42,8 @@ internal class MetadataService : IMetadataService
 
     private GameInfoResponse LoadGameInformation()
     {
-        string gameInfoFile = _pluginSystemLocation.
-            GetBashFor(LinuxGameServerKeys.MODULE_NAME, [BaseInfo.SERVER_CONTROL, BaseInfo.SERVER_CONTROL_CONFIG], BaseInfo.GAME_INFO_FILENAME);
+        string gameInfoFile = _pluginUserLocation.
+            GetUserBashFor(LinuxGameServerKeys.MODULE_NAME, [BaseInfo.SERVER_CONTROL, BaseInfo.SERVER_CONTROL_CONFIG], BaseInfo.GAME_INFO_FILENAME);
         if (!File.Exists(gameInfoFile)) throw new GameInfoNotFoundException();
         try
         {

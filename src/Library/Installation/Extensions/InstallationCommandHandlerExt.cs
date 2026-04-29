@@ -35,7 +35,15 @@ internal static class InstallationCommandHandlerExt
     internal static Command SetInitializingAction(this Command command, IServiceProvider serviceProvider)
     {
         var linuxCommandService = serviceProvider.GetRequiredService<IEngineInstallation>();
-        command.SetAction((parseResult, ct) => linuxCommandService.InitializeAsync(ct));
+        command.SetAction(async (parseResult, ct) =>
+        {
+            bool success = await ExecuteCommandAsync(async () => await linuxCommandService.InitializeAsync(ct));
+
+            if (success)
+                Environment.Exit(0);
+            else
+                Environment.Exit(1);
+        });
         return command;
     }
 

@@ -1,6 +1,6 @@
 ﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response;
-using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response.Enums;
 using GameHost.Games.Lib.LinuxGameServerManager.Exceptions;
+using GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtratorFactory;
 using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Engine;
@@ -8,10 +8,12 @@ namespace GameHost.Games.Lib.LinuxGameServerManager.Engine;
 internal class ServerControlService : IServerControlService
 {
     private readonly ILinuxCommand _linuxCommand;
+    private readonly IDetailExtratorFactory _detailExtratorFactory;
 
-    public ServerControlService(ILinuxCommand linuxCommand)
+    public ServerControlService(ILinuxCommand linuxCommand, IDetailExtratorFactory detailExtratorFactory)
     {
         _linuxCommand = linuxCommand;
+        _detailExtratorFactory = detailExtratorFactory;
     }
     public Task ConsoleAsync(string serverName, Func<string, Task> consoleStream, CancellationToken ct = default) => throw new NotImplementedException();
 
@@ -26,31 +28,10 @@ internal class ServerControlService : IServerControlService
             .ExecAsync(ct);
         if (result.Failed)
             throw new DetailsServerFailedException(result.StandardError);
-        var outputList = new List<DetailsResponse>();
-        DetailsResponse? lastEntry = default;
-        bool capture = false;
-        foreach (var item in result.RawStandardOutput)
-        {
-            if (item.Contains("======") && !capture)
-            {
-                capture = true;
-                continue;
-            }
-            else if (item.Contains("======") && !capture)
-            {
-                if (lastEntry != default) outputList.Remove(lastEntry);
-                continue;
-            }
-            bool port =
-                (item.Contains("INBOUND", StringComparison.OrdinalIgnoreCase) ||
-                item.Contains("OUTBOUND", StringComparison.OrdinalIgnoreCase)) && (item.Contains("tcp", StringComparison.OrdinalIgnoreCase) ||
-                item.Contains("udp", StringComparison.OrdinalIgnoreCase));
+        var outputList = _detailExtratorFactory.ProcessLines(result.RawStandardOutput.ToArray());
 
-            lastEntry = new(item, port ? DetailType.Port : DetailType.Unknown);
-            outputList.Add(lastEntry);
-        }
 
-        return outputList.AsReadOnly();
+        return outputList.ToArray().AsReadOnly();
     }
 
     public async Task RestartAsync(string serverName, CancellationToken ct = default)

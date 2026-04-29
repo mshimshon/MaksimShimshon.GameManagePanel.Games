@@ -64,7 +64,9 @@ internal class EngineInstallationService : IEngineInstallation
             };
             string installStateJson = JsonSerializer.Serialize(installState, BaseInfo.jsonSerializerOptions);
             await _safeFileWriter.WriteThenCopyFileAsync(installStateFile, installStateJson);
+            File.Delete(installProgressFile);
             await PostInstallAsync();
+
         }
         catch
         {

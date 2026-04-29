@@ -1,6 +1,7 @@
 ﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response;
 using GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtratorFactory;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.RegularExpressions;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtractorFactory.Engine;
 
@@ -24,28 +25,28 @@ internal class DetailExtractorFactory : IDetailExtratorFactory
             _resolvedProviders.Add((IDetailExtractorProvider)sp.GetRequiredService(provider));
         }
     }
+
+    private string CleanLine(string line)
+    {
+        if (string.IsNullOrEmpty(line)) return line;
+        var output = line;
+        // 1. Strip ANSI Color/Escape Codes (e.g., \x1B[31m)
+        string noColor = Regex.Replace(output, @"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])", "");
+
+        // 2. Strip Control Characters [\x00-\x1F\x7F]
+        output = Regex.Replace(noColor, @"[\x00-\x1F\x7F]", "");
+        return output;
+    }
     public ICollection<DetailsResponse> ProcessLines(string[] lines)
     {
-        bool capture = false;
-        DetailsResponse? lastEntry = default;
         foreach (var line in lines)
         {
-            var trimmed = line.Trim();
-            if (line.Contains("======") && !capture)
-            {
-                capture = true;
-                continue;
-            }
-            else if (line.Contains("======") && !capture)
-            {
-                if (lastEntry != default) _extracted.Remove(lastEntry);
-                continue;
-            }
+            var cleanLine = CleanLine(line);
+            if (cleanLine.Contains("======")) continue;
             DetailsResponse? nextEntry = default;
-
             foreach (var provider in _resolvedProviders)
             {
-                var result = provider.Process(trimmed);
+                var result = provider.Process(cleanLine);
                 if (result != default)
                 {
                     nextEntry = result;
@@ -53,9 +54,8 @@ internal class DetailExtractorFactory : IDetailExtratorFactory
                 }
             }
             if (nextEntry == default)
-                nextEntry = new(trimmed, Contracts.Response.Enums.DetailType.Unknown);
+                nextEntry = new(cleanLine, Contracts.Response.Enums.DetailType.Unknown);
             _extracted.Add(nextEntry);
-            lastEntry = nextEntry;
         }
         return _extracted;
     }

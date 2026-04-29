@@ -40,6 +40,7 @@ internal class DistroDependencyFileService : IDistroDependencyFileService
         var result = await _linuxCommand
             .BuildCommand("cat /etc/os-release")
             .PatchInStdOutAsPayload()
+            .SetCrazyReport(_crazyReport)
             .ExecPayloadAsync<string>();
         string[] lines = result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
         string? id = default, codename = default, version = default;
@@ -128,6 +129,7 @@ internal class DistroDependencyFileService : IDistroDependencyFileService
         var enableMultiArchitectureResult = await _linuxCommand
             .BuildCommand($"dpkg --add-architecture i386")
                 .AndCommand("apt-get update")
+            .SetCrazyReport(_crazyReport)
             .ExecAsync(ct);
         if (enableMultiArchitectureResult.Failed)
             throw new MultiArchitectureFailedToEnableException(enableMultiArchitectureResult.StandardOutput, enableMultiArchitectureResult.StandardError);
@@ -138,6 +140,7 @@ internal class DistroDependencyFileService : IDistroDependencyFileService
 
             var commandInstallCommonResult = await _linuxCommand
                 .BuildCommand($"apt-get install -y {commonDependencies}")
+            .SetCrazyReport(_crazyReport)
                 .ExecAsync(ct);
             if (commandInstallCommonResult.Failed)
                 throw new DistroDependencyInstallationFailedException(commandInstallCommonResult.StandardOutput,
@@ -151,6 +154,7 @@ internal class DistroDependencyFileService : IDistroDependencyFileService
             var specificDependencies = string.Join(' ', allDeps);
             var commandInstallSpecificResult = await _linuxCommand
                 .BuildCommand($"apt-get install -y {specificDependencies}")
+            .SetCrazyReport(_crazyReport)
                 .ExecAsync(ct);
             if (commandInstallSpecificResult.Failed)
                 throw new DistroDependencyInstallationFailedException(commandInstallSpecificResult.StandardOutput,

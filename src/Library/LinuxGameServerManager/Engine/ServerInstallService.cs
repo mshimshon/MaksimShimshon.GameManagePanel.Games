@@ -1,6 +1,7 @@
 ﻿using GameHost.Games.Lib.LinuxGameServerManager.Entities.Enums;
 using GameHost.Games.Lib.LinuxGameServerManager.Exceptions;
 using LunaticPanel.Core.Utils.Abstraction.LinuxCommand;
+using LunaticPanel.Core.Utils.Abstraction.Logging;
 using System.Text.RegularExpressions;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Engine;
@@ -8,9 +9,12 @@ namespace GameHost.Games.Lib.LinuxGameServerManager.Engine;
 internal class ServerInstallService : IServerInstallService
 {
     private readonly ILinuxCommand _linuxCommand;
-    public ServerInstallService(ILinuxCommand linuxCommand)
+    private readonly ICrazyReport _crazyReport;
+
+    public ServerInstallService(ILinuxCommand linuxCommand, ICrazyReport<ServerInstallService> crazyReport)
     {
         _linuxCommand = linuxCommand;
+        _crazyReport = crazyReport;
     }
     private Dictionary<ProblemType, string?> ScanConsoleForIssues(string[] output, params ProblemType[] scanFor)
     {
@@ -75,6 +79,7 @@ internal class ServerInstallService : IServerInstallService
            .BuildCommand("dpkg --add-architecture i386")
            .AndCommand("apt-get update")
            .AndCommand($"apt-get install -y {string.Join(' ', deps)}")
+            .SetCrazyReport(_crazyReport)
            .ExecAsync(ct);
         if (resultDep.Failed)
             throw new DependenciesInstallationFailedException(resultDep.StandardOutput, resultDep.StandardError, serverName, deps);
@@ -86,6 +91,7 @@ internal class ServerInstallService : IServerInstallService
                 .AndCommand($"{BaseInfo.BASH_PATH} ./linuxgsm.sh \"{serverName}\"")
                 .AndCommand($"{BaseInfo.BASH_PATH} \"./{serverName}\" auto-install")
                 .AsUser(BaseInfo.USERNAME)
+            .SetCrazyReport(_crazyReport)
                 .ExecAsync(ct);
 
         var scanResult = ScanConsoleForIssues(result.RawStandardOutput.ToArray(), ProblemType.MissingDependency, ProblemType.CritialFailure);
@@ -105,6 +111,7 @@ internal class ServerInstallService : IServerInstallService
             .BuildCommand($"cd \"{BaseInfo.HOME}\"")
             .AndCommand($"./\"{serverName}\" force-update")
             .AsUser(BaseInfo.USERNAME)
+            .SetCrazyReport(_crazyReport)
             .ExecAsync(ct);
         var scanResult = ScanConsoleForIssues(result.RawStandardOutput.ToArray(), ProblemType.MissingDependency, ProblemType.CritialFailure);
         if (result.Failed || scanResult.ContainsKey(ProblemType.CritialFailure))
@@ -116,6 +123,7 @@ internal class ServerInstallService : IServerInstallService
                         .BuildCommand($"cd \"{BaseInfo.HOME}\"")
                         .AndCommand($"./\"{serverName}\" validate")
                         .AsUser(BaseInfo.USERNAME)
+            .SetCrazyReport(_crazyReport)
                         .ExecAsync(ct);
         var scanResult = ScanConsoleForIssues(result.RawStandardOutput.ToArray(), ProblemType.CritialFailure);
         if (result.Failed || scanResult.ContainsKey(ProblemType.CritialFailure))
@@ -129,6 +137,7 @@ internal class ServerInstallService : IServerInstallService
                 .BuildCommand($"cd \"{BaseInfo.HOME}\"")
                 .AndCommand("curl -Lo linuxgsm.sh https://linuxgsm.sh")
                 .AndCommand("chmod +x linuxgsm.sh")
+            .SetCrazyReport(_crazyReport)
                 .ExecAsync(ct);
         if (result.Failed) throw new DownloadHasFailedException(result.StandardError, $"Couldn't install the LGSM scripts.");
     }
@@ -139,6 +148,7 @@ internal class ServerInstallService : IServerInstallService
             .BuildCommand($"cd \"{BaseInfo.HOME}\"")
             .AndCommand($"./\"{serverName}\" update-lgsm")
             .AsUser(BaseInfo.USERNAME)
+            .SetCrazyReport(_crazyReport)
             .ExecAsync(ct);
         if (result.Failed)
             throw new UpdateSoftwareFailedException(result.StandardError);
@@ -151,6 +161,7 @@ internal class ServerInstallService : IServerInstallService
             .BuildCommand($"cd \"{BaseInfo.HOME}\"")
             .AndCommand($"./\"{serverName}\" check-update")
             .AsUser(BaseInfo.USERNAME)
+            .SetCrazyReport(_crazyReport)
             .ExecAsync(ct);
         var scanResult = ScanConsoleForIssues(result.RawStandardOutput.ToArray(), ProblemType.CritialFailure);
         if (result.Failed || scanResult.ContainsKey(ProblemType.CritialFailure))
