@@ -13,7 +13,7 @@
           "GameHost.Games.Lib.Installation": "1.0.0",
           "GameHost.Games.Lib.LinuxGameServerManager": "1.0.0",
           "LinuxGameServerManager.Extension": "1.0.0",
-          "LunaticPanel.Core.Utils": "0.1.830",
+          "LunaticPanel.Core.Utils": "0.1.831",
           "Microsoft.Extensions.DependencyInjection": "10.0.7",
           "GameHost.Games.Lib.Installation.Reference": "1.0.0.0",
           "GameHost.Games.Lib.LinuxGameServerManager.Reference": "1.0.0.0",
@@ -762,24 +762,24 @@
           }
         }
       },
-      "LunaticPanel.Core.Utils/0.1.830": {
+      "LunaticPanel.Core.Utils/0.1.831": {
         "dependencies": {
-          "LunaticPanel.Core.Utils.Abstraction": "0.1.830",
+          "LunaticPanel.Core.Utils.Abstraction": "0.1.831",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.7",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.7"
         },
         "runtime": {
           "lib/net10.0/LunaticPanel.Core.Utils.dll": {
-            "assemblyVersion": "0.1.830.0",
-            "fileVersion": "0.1.830.0"
+            "assemblyVersion": "0.1.831.0",
+            "fileVersion": "0.1.831.0"
           }
         }
       },
-      "LunaticPanel.Core.Utils.Abstraction/0.1.830": {
+      "LunaticPanel.Core.Utils.Abstraction/0.1.831": {
         "runtime": {
           "lib/net10.0/LunaticPanel.Core.Utils.Abstraction.dll": {
-            "assemblyVersion": "0.1.830.0",
-            "fileVersion": "0.1.830.0"
+            "assemblyVersion": "0.1.831.0",
+            "fileVersion": "0.1.831.0"
           }
         }
       },
@@ -989,7 +989,7 @@
       "GameHost.Games.Lib.Installation/1.0.0": {
         "dependencies": {
           "GameHost.Core": "0.1.0",
-          "LunaticPanel.Core.Utils": "0.1.830",
+          "LunaticPanel.Core.Utils": "0.1.831",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.7",
           "Microsoft.Extensions.Logging": "10.0.7",
           "Microsoft.Extensions.Logging.Console": "10.0.7",
@@ -1003,7 +1003,7 @@
       },
       "GameHost.Games.Lib.LinuxGameServerManager/1.0.0": {
         "dependencies": {
-          "LunaticPanel.Core.Utils": "0.1.830",
+          "LunaticPanel.Core.Utils": "0.1.831",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.7",
           "Microsoft.Extensions.Logging": "10.0.7",
           "Microsoft.Extensions.Logging.Console": "10.0.7"
@@ -1055,19 +1055,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "LunaticPanel.Core.Utils/0.1.830": {
+    "LunaticPanel.Core.Utils/0.1.831": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GDOv/FF3IzkdHAFUssj6gb2KGSAeqPVq71Rh5NNeKtx7+Bmy8MWWL95GiQzHw29X6SGcBznFjOfEmEYXvIy2tA==",
-      "path": "lunaticpanel.core.utils/0.1.830",
-      "hashPath": "lunaticpanel.core.utils.0.1.830.nupkg.sha512"
+      "sha512": "sha512-raSkkDhCSRZybH6oN1aV4wdclrlqR0MPz4YQw/KNf2TsZitrDL4eyhB5wRRUBSHyZdXJkaRFV9p3Q01gBhcfiA==",
+      "path": "lunaticpanel.core.utils/0.1.831",
+      "hashPath": "lunaticpanel.core.utils.0.1.831.nupkg.sha512"
     },
-    "LunaticPanel.Core.Utils.Abstraction/0.1.830": {
+    "LunaticPanel.Core.Utils.Abstraction/0.1.831": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7tfYeYdaOX5Diz+IQjB8KLWsl1YWozkrfQ+FRRfNWsLd9RVRG1XLrwDLQLmalBCf5vSUpShGMHPUP42fKn+OHQ==",
-      "path": "lunaticpanel.core.utils.abstraction/0.1.830",
-      "hashPath": "lunaticpanel.core.utils.abstraction.0.1.830.nupkg.sha512"
+      "sha512": "sha512-T1XSjNz8b0jsmYyKeY7O6HxRVC1uJSkFKGmvg3jTcYlds7R6J14rUMrqViPMsyR7agBA9gzQFz+6V8jSBp0Ybw==",
+      "path": "lunaticpanel.core.utils.abstraction/0.1.831",
+      "hashPath": "lunaticpanel.core.utils.abstraction.0.1.831.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/10.0.7": {
       "type": "package",

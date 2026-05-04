@@ -13,7 +13,9 @@ internal static class ModCommandHandlerExt
             var serviceModControl = serviceProvider.GetRequiredService<IServerModControl>();
             bool success = false;
             if (parseResult.GetValue<bool>("--check"))
-                success = await ExecuteCommandResultAsync(async () => await serviceModControl.HasModSupportAsync(ct));
+                success = await ExecuteCommandResultAsync(async () => await serviceModControl.IsSupportedAsync(ct));
+            else if (parseResult.GetValue<bool>("--details"))
+                success = await ExecuteCommandResultAsync(async () => await serviceModControl.GetDetailsAsync(ct));
             else
                 await command.PrintHelp();
             if (success)
