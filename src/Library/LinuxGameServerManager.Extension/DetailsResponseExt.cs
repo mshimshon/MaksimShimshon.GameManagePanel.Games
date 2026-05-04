@@ -72,7 +72,7 @@ public static class DetailsResponseExt
 
         foreach (var detail in details)
         {
-            Console.WriteLine(detail);
+            //Console.WriteLine(detail);
             FilterForStatus(detail, result);
             FilterForIP(detail, result);
             FilterForPort(detail, result);

@@ -122,8 +122,9 @@ internal class DistroDependencyFileService : IDistroDependencyFileService
 
     }
 
-    public async Task InstallDependenciesAsync(string gameName, CancellationToken ct = default)
+    public async Task InstallDependenciesAsync(string gameName, Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
+        await updateProgressStatus("Installing Dependencies...", ct);
         var dependencyInfo = ReadDependencyFile(ct);
         _crazyReport.ReportInfo("Extracting Dependencies to Install");
         var enableMultiArchitectureResult = await _linuxCommand

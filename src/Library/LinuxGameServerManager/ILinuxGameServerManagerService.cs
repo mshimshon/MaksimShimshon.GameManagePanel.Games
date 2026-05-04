@@ -12,7 +12,7 @@ public interface ILinuxGameServerManagerService
     Task StopAsync(string serverName, CancellationToken ct = default);
     Task StartAsync(string serverName, CancellationToken ct = default);
     Task RestartAsync(string serverName, CancellationToken ct = default);
-    Task InstallAsync(string serverName, CancellationToken ct = default);
+    Task InstallAsync(string serverName, Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default);
     Task ValidateAsync(string serverName, CancellationToken ct = default);
     Task UpdateGameAsync(string serverName, CancellationToken ct = default);
     Task<IEnumerable<string>> CheckUpdateGameAsync(string serverName, CancellationToken ct = default);

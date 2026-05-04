@@ -72,8 +72,8 @@ internal class ServerInstallationService : IServerInstallation
     public async Task InstallAsync(Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
         await _distroDependencyFileService.DownloadOfficialDistroDependencyFile(ct);
-        await _distroDependencyFileService.InstallDependenciesAsync(BaseInfo.SERVER_ID, ct);
-        await _linuxGameServerManagerService.InstallAsync(BaseInfo.LGSM_SERVER_ID, ct);
+        await _distroDependencyFileService.InstallDependenciesAsync(BaseInfo.SERVER_ID, updateProgressStatus, ct);
+        await _linuxGameServerManagerService.InstallAsync(BaseInfo.LGSM_SERVER_ID, updateProgressStatus, ct);
     }
 
     public Task PostInstallAsync(CancellationToken ct = default) => Task.CompletedTask;

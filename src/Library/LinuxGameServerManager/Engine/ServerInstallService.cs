@@ -84,12 +84,35 @@ internal class ServerInstallService : IServerInstallService
         if (resultDep.Failed)
             throw new DependenciesInstallationFailedException(resultDep.StandardOutput, resultDep.StandardError, serverName, deps);
     }
-    public async Task InstallGameServerAsync(string serverName, CancellationToken ct = default)
+
+    private const string STEAM_DOWNLOAD_REGEX = @"\[\s*(\d+%|----)\s*\]\s*Downloading\s*update\s*\(\s*(.*?)\s*\)";
+    private const string STEAM_GAME_DOWNLOAD_REGEX = @"Update\s+state\s+\(.*?\)\s+.*?,\s+progress:\s+([\d.]+)\s*\(\s*(.*?)\s*\)";
+
+
+    private async Task FilterKeyProgressReport(string line, Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
+    {
+        StringComparison comparer = StringComparison.OrdinalIgnoreCase;
+        var matchDownloadSteam = Regex.Match(line, STEAM_DOWNLOAD_REGEX, RegexOptions.IgnoreCase);
+        var matchGameDownloadSteam = Regex.Match(line, STEAM_GAME_DOWNLOAD_REGEX, RegexOptions.IgnoreCase);
+        if (matchDownloadSteam.Success)
+            await updateProgressStatus($"Downloading SteamCMD {matchDownloadSteam.Groups[1].Value}...", ct);
+        else if (matchGameDownloadSteam.Success)
+            await updateProgressStatus($"Downloading Game Server {matchGameDownloadSteam.Groups[1].Value}%...", ct);
+        else if (line.Contains("LinuxGSM_", comparer))
+            await updateProgressStatus("Install Linux GSM, Thanks Daniel Gibbs...", ct);
+        else if (line.Contains("Dependencies", comparer) && line.Contains("Checking", comparer))
+            await updateProgressStatus("Validating Dependencies...", ct);
+
+    }
+
+    public async Task InstallGameServerAsync(string serverName, Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
         var result = await _linuxCommand
                 .BuildCommand($"cd \"{BaseInfo.HOME}\"")
                 .AndCommand($"{BaseInfo.BASH_PATH} ./linuxgsm.sh \"{serverName}\"")
                 .AndCommand($"{BaseInfo.BASH_PATH} \"./{serverName}\" auto-install")
+                .AutoCleanConsoleStream()
+                .ReadConsoleOutput((line) => FilterKeyProgressReport(line, updateProgressStatus, ct))
                 .AsUser(BaseInfo.USERNAME)
             .SetCrazyReport(_crazyReport)
                 .ExecAsync(ct);
@@ -101,7 +124,7 @@ internal class ServerInstallService : IServerInstallService
             await InstallDependenciesAsync(serverName, deps.Split(' '), ct);
         }
 
-        if (result.Failed || result.StandardError.Count() > 0 || scanResult.ContainsKey(ProblemType.CritialFailure))
+        if (result.Failed || scanResult.ContainsKey(ProblemType.CritialFailure))
             throw new DownloadHasFailedException(result.StandardOutput, $"Couldn't install the game server for {serverName}");
 
     }

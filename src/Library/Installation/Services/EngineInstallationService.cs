@@ -15,7 +15,7 @@ internal class EngineInstallationService : IEngineInstallation
     private readonly IPluginSystemLocation _pluginSystemLocation;
     private readonly IEngineInitializerService _engineInitializerService;
     private readonly IMetadataService _metadataService;
-
+    private readonly string _installProgressFile;
 
     public EngineInstallationService(IServerInstallation serverInstallation,
         ISafeFileWriter safeFileWriter,
@@ -28,18 +28,28 @@ internal class EngineInstallationService : IEngineInstallation
         _pluginSystemLocation = pluginLocation;
         _engineInitializerService = engineInitializerService;
         _metadataService = metadataService;
+        _installProgressFile = _pluginSystemLocation.GetConfigFor(LinuxGameServerKeys.MODULE_NAME, LinuxGameServerKeys.SERVER_INSTALL_PROGRESS_FILE);
     }
 
+
+    private async Task WriteProgressFile(InstallationProgressResponse next, CancellationToken ct = default)
+    {
+        string toWriteJson = JsonSerializer.Serialize(next, BaseInfo.jsonSerializerOptions);
+        if (ct.IsCancellationRequested) return;
+        await _safeFileWriter.WriteThenCopyFileAsync(_installProgressFile, toWriteJson);
+    }
 
 
     public async Task InstallAsync(Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     {
-
+        object _lock = new();
         string installStateFile = _pluginSystemLocation.GetConfigFor(LinuxGameServerKeys.MODULE_NAME, LinuxGameServerKeys.SERVER_INSTALL_STATE_FILE);
         if (File.Exists(installStateFile))
             throw new ServerAlreadyInstalledException();
-        string installProgressFile = _pluginSystemLocation.GetConfigFor(LinuxGameServerKeys.MODULE_NAME, LinuxGameServerKeys.SERVER_INSTALL_PROGRESS_FILE);
+        _pluginSystemLocation.GetConfigFor(LinuxGameServerKeys.MODULE_NAME, LinuxGameServerKeys.SERVER_INSTALL_PROGRESS_FILE);
         var manifest = await _metadataService.GetManifestAsync(ct);
+        InstallationProgressResponse? nextProgressStatus = default;
+
         var progress = new InstallationProgressResponse()
         {
             CurrentStep = $"Installing {manifest.DisplayName}...", // TODO: LOCALIZe
@@ -47,16 +57,44 @@ internal class EngineInstallationService : IEngineInstallation
             Id = manifest.Id,
             IsInstalling = true
         };
+        bool isProgressReportBusy = false;
+        var drainCts = new CancellationTokenSource();
+        var writeProgress = async () =>
+        {
+            lock (_lock)
+            {
+                if (isProgressReportBusy) return;
+                isProgressReportBusy = true;
+            }
+
+            do
+            {
+                if (nextProgressStatus == default) break;
+                var next = nextProgressStatus;
+                nextProgressStatus = default;
+                await WriteProgressFile(next, drainCts.Token);
+                await Task.Delay(50);
+            } while (nextProgressStatus != default && !drainCts.IsCancellationRequested);
+            lock (_lock)
+                isProgressReportBusy = false;
+        };
         try
         {
             string json = JsonSerializer.Serialize(progress, BaseInfo.jsonSerializerOptions);
-            await _safeFileWriter.WriteThenCopyFileAsync(installProgressFile, json);
             await _serverInstallation.InstallAsync(async (status, token) =>
             {
-                var toWrite = progress with { CurrentStep = status };
-                string toWriteJson = JsonSerializer.Serialize(toWrite, BaseInfo.jsonSerializerOptions);
-                await _safeFileWriter.WriteThenCopyFileAsync(installProgressFile, json);
+                lock (_lock)
+                {
+                    nextProgressStatus = progress with
+                    {
+                        CurrentStep = status
+                    };
+                    if (isProgressReportBusy) return;
+                }
+                _ = writeProgress();
+
             }, ct);
+            drainCts.Cancel();
             var installState = new InstallationStateResponse()
             {
                 Id = manifest.Id,
@@ -64,12 +102,13 @@ internal class EngineInstallationService : IEngineInstallation
             };
             string installStateJson = JsonSerializer.Serialize(installState, BaseInfo.jsonSerializerOptions);
             await _safeFileWriter.WriteThenCopyFileAsync(installStateFile, installStateJson);
-            File.Delete(installProgressFile);
+            File.Delete(_installProgressFile);
             await PostInstallAsync();
 
         }
         catch
         {
+            drainCts.Cancel();
             progress = progress with
             {
                 CurrentStep = $"Failed to Install {manifest.DisplayName}", // TODO: LOCALIZe
@@ -77,7 +116,7 @@ internal class EngineInstallationService : IEngineInstallation
                 FailureReason = "Failed to install the game server check log." // TODO: LOCALIZe
             };
             string json = JsonSerializer.Serialize(progress, BaseInfo.jsonSerializerOptions);
-            await _safeFileWriter.WriteThenCopyFileAsync(installProgressFile, json);
+            await _safeFileWriter.WriteThenCopyFileAsync(_installProgressFile, json);
 
             throw;
         }

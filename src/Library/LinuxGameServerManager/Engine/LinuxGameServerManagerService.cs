@@ -48,11 +48,11 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
 
 
 
-    public Task InstallAsync(string serverName, CancellationToken ct = default)
+    public Task InstallAsync(string serverName, Func<string, CancellationToken, Task> updateProgressStatus, CancellationToken ct = default)
     => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, async () =>
     {
         await TrialProcess(() => _serverInstallService.DownloadSoftwareAsync(serverName, ct), ct);
-        await TrialProcess(() => _serverInstallService.InstallGameServerAsync(serverName, ct), ct);
+        await TrialProcess(() => _serverInstallService.InstallGameServerAsync(serverName, updateProgressStatus, ct), ct);
     }, () => new InstallAlreadyRunningException(), ct);
     public Task UpdateGameAsync(string serverName, CancellationToken ct = default)
          => ProcessWithLock(BaseInfo.INSTALL_LOCK_FILE, async () =>
@@ -107,7 +107,12 @@ internal class LinuxGameServerManagerService : ILinuxGameServerManagerService
             }
             bool hasFailed = failure != default;
             bool hasSucceeded = failure == default;
-            if (ct.IsCancellationRequested) return;
+            if (ct.IsCancellationRequested)
+            {
+                if (hasFailed)
+                    throw failure!;
+                return;
+            }
             if (hasFailed && maxTry > 0)
             {
                 _crazyReport.ReportErrorException(failure!.Message, failure);

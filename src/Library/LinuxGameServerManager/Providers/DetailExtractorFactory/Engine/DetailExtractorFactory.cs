@@ -1,7 +1,7 @@
 ﻿using GameHost.Games.Lib.LinuxGameServerManager.Contracts.Response;
 using GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtratorFactory;
+using LunaticPanel.Core.Utils.Abstraction.LinuxCommand.Helper;
 using Microsoft.Extensions.DependencyInjection;
-using System.Text.RegularExpressions;
 
 namespace GameHost.Games.Lib.LinuxGameServerManager.Providers.DetailExtractorFactory.Engine;
 
@@ -26,22 +26,12 @@ internal class DetailExtractorFactory : IDetailExtratorFactory
         }
     }
 
-    private string CleanLine(string line)
-    {
-        if (string.IsNullOrEmpty(line)) return line;
-        var output = line;
-        // 1. Strip ANSI Color/Escape Codes (e.g., \x1B[31m)
-        string noColor = Regex.Replace(output, @"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])", "");
 
-        // 2. Strip Control Characters [\x00-\x1F\x7F]
-        output = Regex.Replace(noColor, @"[\x00-\x1F\x7F]", "");
-        return output;
-    }
     public ICollection<DetailsResponse> ProcessLines(string[] lines)
     {
         foreach (var line in lines)
         {
-            var cleanLine = CleanLine(line);
+            var cleanLine = line.CleanFromColorCodes();
             if (cleanLine.Contains("======")) continue;
             DetailsResponse? nextEntry = default;
             foreach (var provider in _resolvedProviders)
